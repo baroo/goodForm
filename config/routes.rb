@@ -1,5 +1,5 @@
 GoodForm::Application.routes.draw do
-  resources :good_form
+  resources :goodForms
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
