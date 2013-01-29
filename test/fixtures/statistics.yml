@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  snapId: 
+  gameTime: 2013-01-28
+  gameId: 
+  homePossession: 
+  homegoals: 
+
+two:
+  snapId: 
+  gameTime: 2013-01-28
+  gameId: 
+  homePossession: 
+  homegoals: 
