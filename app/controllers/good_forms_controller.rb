@@ -1,6 +1,7 @@
 class GoodFormsController < ApplicationController
+
 	def index
-		@leagues = League.all
+	@teams = Team.search(params[:search])
 	end
 	
 	def show
