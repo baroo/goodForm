@@ -1,2 +1,6 @@
 <h1>GOOD FORM!</h1>
-<p>Gerrahhht</p>
+<!--<% @leagues.each do |league| %>
+	<h2><%= league.name %></h2>
+	<p><%= league.leagueId %></p>
+	<hr />
+<% end %> -->
