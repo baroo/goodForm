@@ -2,6 +2,7 @@ class GoodFormsController < ApplicationController
 
 	def index
 	@teams = Team.search(params[:search])
+	
 	end
 	
 	def show
