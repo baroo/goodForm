@@ -1,12 +1,11 @@
 class GoodFormsController < ApplicationController
 
 	def index
-	@teams = Team.search(params[:search])
-	
+		@teams = Team.search(params[:search])
 	end
 	
 	def show
-	
+		@team = Team.find(params[:id])
 	end
 	
 	def new

@@ -7,12 +7,11 @@
   </p>
 <% end %>
 
-
 <ul>
 
 <% for team in @teams %>
 	<li>
-		<%= link_to team.name, goodForms_path(team) %>
+		<%= link_to team.name, goodForm_path(team) %>
 	</li>
 <% end %>
 
