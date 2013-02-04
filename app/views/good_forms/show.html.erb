@@ -1,3 +1,21 @@
 <h1><%= @team.name %></h1>
-<p> <%= @team.id %> </p>
+
+<table border="1">
+<tr>
+<td>TEAM ID</td>
+<td><%= @team.id %></td>
+</tr>
+<tr>
+<td>GAME ID</td>
+<td><%= @game.gameId %></td>
+</tr>
+<tr>
+<td>GAME AWAY TEAM ID</td>
+<td><%= @game.awayTeamId %></td>
+</tr>
+<tr>
+<td>GAME KO DATE</td>
+<td><%= @game.koDate %></td>
+</tr>
+
 <small><%= @team.created_at %></small>

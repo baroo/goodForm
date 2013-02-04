@@ -5,8 +5,8 @@ class GoodFormsController < ApplicationController
 	end
 	
 	def show
-		@team = Team.find(params[:id].to_i)
-		
+		@team = Team.find(params[:id])
+		@game = Game.find(params[:id])
 	end
 	
 	def new
