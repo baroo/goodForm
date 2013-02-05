@@ -5,25 +5,12 @@
 <td>TEAM ID</td>
 <td><%= @team.id %></td>
 </tr>
-<tr>
-<td>GAME ID</td>
-<td><%= @game.id %></td>
-</tr>
-<tr>
-<td>LEAGUE ID</td>
-<td><%= @game.leagueid %></td>
-</tr>
-<tr>
-<td>GAME HOME TEAM ID</td>
-<td><%= @game.hometeamid %></td>
-</tr>
-<tr>
-<td>GAME AWAY TEAM ID</td>
-<td><%= @game.awayteamid %></td>
-</tr>
-<tr>
-<td>GAME KO DATE</td>
-<td><%= @game.kodate %></td>
-</tr>
+
+<% @game.each do |game| %>
+	<tr>
+	<td>GAME ID</td>
+	<td><%= game.id %></td>
+	</tr>
+<% end %>
 
 <small><%= @team.created_at %></small>
