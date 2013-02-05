@@ -6,7 +6,7 @@ class GoodFormsController < ApplicationController
 	
 	def show
 		@team = Team.find(params[:id])
-		@game = Game.find(:all, :awayTeamId => @team.id)
+		@game = Game.find(:all, :awayteamid => @team.id)
 	end
 	
 	def new
