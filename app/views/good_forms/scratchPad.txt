@@ -1,0 +1,25 @@
+FROM SHOW.html
+
+
+<% @game.each do |game| %>
+	<tr>
+	<td>GAME ID</td>
+	<td><%= game.koDate %></td>
+	<td><%= game.hometeamid %></td>
+	<td><%= game.awayTeamId %></td>
+	<td><%= link_to game.id, goodForm_path(game) %></td>
+	</tr>
+<% end %>
+
+<% @statistics.each do |stat| %>
+	<tr>
+	<td>H B S</td>
+	<td><%= stat.hbs %></td>
+	<td><%= link_to stat.id, goodForm_path(stat) %></td>
+	</tr>
+<% end %>
+
+<tr>
+<td>TEAM ID</td>
+<td><%= @team.id %></td>
+</tr>

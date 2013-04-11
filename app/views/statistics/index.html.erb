@@ -1,0 +1,21 @@
+<h1>Statistics</h1>
+
+<table border="1">
+
+<!-- <%= debug  params %> -->
+<!-- <%= debug  @statistics %> -->
+<tr>
+	<th>Game Time</th>
+	<th>Seen Time</th>
+	<th>Game ID</th>
+	<th>Home Goals</th>
+	<th>Home Penalties</th>
+</tr>
+<tr>
+	<th><%= @statistics.first.gametime %></th>
+	<th><%= @statistics.first.seentime %></th>
+	<th><%= @statistics.first.game_id %></th>
+	<th><%= @statistics.first.hg %></th>
+	<th><%= @statistics.first.hpen %></th>
+	
+</tr>

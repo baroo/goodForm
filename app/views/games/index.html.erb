@@ -1,0 +1,26 @@
+<h1>Games</h1>
+
+<table border="1">
+
+<!--<%= debug @games %>
+<p>
+  <b>First Game:</b>
+  <%=h @games.find(1) %>
+</p> -->
+    <tr>
+		<th>LEAGUE</th>
+		<th>KICK OFF DATE</th>
+		<th>HOME TEAM</th>
+		<th>AWAY TEAM</th>
+		<th>STATS</th>
+	</tr>
+		<% @games.each do |game| %>
+	<tr>
+		<td><%= link_to game.league.name %></td>
+		<td><%= game.koDate %></td>
+		<td><%= link_to game.team1.name %></td>
+		<td><%= link_to game.team2.name %></td>
+		<td><%= link_to game.statistic.hcl %></td>
+	</tr>
+<% end %>
+

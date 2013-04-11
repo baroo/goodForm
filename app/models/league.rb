@@ -1,3 +1,4 @@
 class League < ActiveRecord::Base
-  attr_accessible :leagueId, :name
+  attr_accessible :name
+  has_many :games
 end

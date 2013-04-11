@@ -1,16 +1,26 @@
-<h1><%= @team.name %></h1>
+<h1><%= @team.name %>: Games</h1>
 
 <table border="1">
-<tr>
-<td>TEAM ID</td>
-<td><%= @team.id %></td>
-</tr>
 
-<% @game.each do |game| %>
-	<tr>
-	<td>GAME ID</td>
+<!-- <%= debug @games %> -->
+
+<tr>
+	<th>ID</th>
+	<th>LEAGUE</th>
+	<th>KICK OFF DATE</th>
+	<th>HOME TEAM</th>
+	<th>AWAY TEAM</th>
+	<th>STATS</th>
+</tr>
+	<% @games.each do |game| %>
+<tr>
 	<td><%= game.id %></td>
-	</tr>
-<% end %>
+	<td><%= game.league.name %></td>
+	<td><%= game.koDate %></td>
+	<td><%= game.team1.name %></td>
+	<td><%= game.team2.name %></td>
+	<td><%= link_to "Click for Stats", goodForm_statistics_path(game)%></td>
+</tr>
+	<% end %>
 
 <small><%= @team.created_at %></small>

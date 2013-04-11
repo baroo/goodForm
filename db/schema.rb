@@ -11,35 +11,62 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128225120) do
+ActiveRecord::Schema.define(:version => 20130331171849) do
 
   create_table "games", :force => true do |t|
-    t.integer  "gameId"
+    t.integer  "league_id"
     t.date     "koDate"
-    t.integer  "awayTeamId"
+    t.integer  "team1"
+    t.integer  "team2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "leagues", :force => true do |t|
-    t.string   "leagueId"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "statistics", :force => true do |t|
-    t.integer  "snapId"
-    t.date     "gameTime"
-    t.integer  "gameId"
-    t.integer  "homePossession"
-    t.integer  "homegoals"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "gametime"
+    t.datetime "seentime"
+    t.integer  "game_id"
+    t.integer  "hpn"
+    t.integer  "hg"
+    t.integer  "hpen"
+    t.integer  "hsont"
+    t.integer  "hsofft"
+    t.integer  "hw"
+    t.integer  "hco"
+    t.integer  "hfk"
+    t.integer  "ht"
+    t.integer  "hyc"
+    t.integer  "hrc"
+    t.integer  "ha"
+    t.integer  "hda"
+    t.integer  "hbs"
+    t.integer  "hcl"
+    t.integer  "apn"
+    t.integer  "ag"
+    t.integer  "apen"
+    t.integer  "asont"
+    t.integer  "asofft"
+    t.integer  "aw"
+    t.integer  "aco"
+    t.integer  "afk"
+    t.integer  "at"
+    t.integer  "ayc"
+    t.integer  "arc"
+    t.integer  "aa"
+    t.integer  "ada"
+    t.integer  "abs"
+    t.integer  "acl"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "teams", :force => true do |t|
-    t.integer  "teamId"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
