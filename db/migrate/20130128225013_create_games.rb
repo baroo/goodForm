@@ -3,7 +3,7 @@ class CreateGames < ActiveRecord::Migration
     create_table :games do |t|
       t.integer :gameId
       t.date :koDate
-      t.integer :awayTeamId
+      t.integer :homeTeamId
       t.integer :awayTeamId
 
       t.timestamps
