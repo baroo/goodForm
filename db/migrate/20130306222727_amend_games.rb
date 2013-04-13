@@ -4,7 +4,7 @@ class AmendGames < ActiveRecord::Migration
       t.integer :leagueId
       t.date :koDate
       t.integer :team1
-      t.integer ::team2
+      t.integer :team2
       t.timestamps
 	  end
   end
