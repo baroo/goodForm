@@ -1,0 +1,72 @@
+SQL> describe statistics;
++--------------------------------------------------------------------------------------------------------+
+|   Column   |            Type             |                          Modifiers                          |
++--------------------------------------------------------------------------------------------------------+
+| id         | integer                     | primary key not null nextval('statistics_id_seq'::regclass) |
+| gametime   | integer                     |                                                             |
+| seentime   | timestamp without time zone |                                                             |
+| game_id    | integer                     |                                                             |
+| hpn        | integer                     |                                                             |
+| hg         | integer                     |                                                             |
+| hpen       | integer                     |                                                             |
+| hsont      | integer                     |                                                             |
+| hsofft     | integer                     |                                                             |
+| hw         | integer                     |                                                             |
+| hco        | integer                     |                                                             |
+| hfk        | integer                     |                                                             |
+| ht         | integer                     |                                                             |
+| hyc        | integer                     |                                                             |
+| hrc        | integer                     |                                                             |
+| ha         | integer                     |                                                             |
+| hda        | integer                     |                                                             |
+| hbs        | integer                     |                                                             |
+| hcl        | integer                     |                                                             |
+| apn        | integer                     |                                                             |
+| ag         | integer                     |                                                             |
+| apen       | integer                     |                                                             |
+| asont      | integer                     |                                                             |
+| asofft     | integer                     |                                                             |
+| aw         | integer                     |                                                             |
+| aco        | integer                     |                                                             |
+| afk        | integer                     |                                                             |
+| at         | integer                     |                                                             |
+| ayc        | integer                     |                                                             |
+| arc        | integer                     |                                                             |
+| aa         | integer                     |                                                             |
+| ada        | integer                     |                                                             |
+| abs        | integer                     |                                                             |
+| acl        | integer                     |                                                             |
+| created_at | timestamp without time zone | not null                                                    |
+| updated_at | timestamp without time zone | not null                                                    |
++--------------------------------------------------------------------------------------------------------+
+SQL> describe games;
++---------------------------------------------------------------------------------------------------+
+|   Column   |            Type             |                       Modifiers                        |
++---------------------------------------------------------------------------------------------------+
+| id         | integer                     | primary key not null nextval('games_id_seq'::regclass) |
+| leagueId   | integer                     |                                                        |
+| koDate     | date                        |                                                        |
+| team1      | integer                     |                                                        |
+| team2      | integer                     |                                                        |
+| created_at | timestamp without time zone | not null                                               |
+| updated_at | timestamp without time zone | not null                                               |
++---------------------------------------------------------------------------------------------------+
+SQL> describe teams;
++---------------------------------------------------------------------------------------------------+
+|   Column   |            Type             |                       Modifiers                        |
++---------------------------------------------------------------------------------------------------+
+| id         | integer                     | primary key not null nextval('teams_id_seq'::regclass) |
+| name       | character varying(255)      |                                                        |
+| created_at | timestamp without time zone | not null                                               |
+| updated_at | timestamp without time zone | not null                                               |
++---------------------------------------------------------------------------------------------------+
+SQL> describe leagues;
++-----------------------------------------------------------------------------------------------------+
+|   Column   |            Type             |                        Modifiers                         |
++-----------------------------------------------------------------------------------------------------+
+| id         | integer                     | primary key not null nextval('leagues_id_seq'::regclass) |
+| name       | character varying(255)      |                                                          |
+| league_id  | character varying(255)      |                                                          |
+| created_at | timestamp without time zone | not null                                                 |
+| updated_at | timestamp without time zone | not null                                                 |
++-----------------------------------------------------------------------------------------------------+
