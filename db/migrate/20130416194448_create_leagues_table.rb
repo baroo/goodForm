@@ -4,6 +4,7 @@ class CreateLeaguesTable < ActiveRecord::Migration
       t.string :league_Id
       t.string :name
       t.timestamps
+	  end
   end
 
   def down
