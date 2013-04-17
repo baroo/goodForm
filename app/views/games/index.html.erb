@@ -17,7 +17,7 @@
 		<% @games.each do |game| %>
 	<tr>
 		<td><%= link_to game.league.name %></td>
-		<td><%= game.koDate %></td>
+		<td><%= game.kodate %></td>
 		<td><%= link_to game.team1.name %></td>
 		<td><%= link_to game.team2.name %></td>
 		<td><%= link_to game.statistic.hcl %></td>
