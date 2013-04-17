@@ -14,6 +14,8 @@
 	<th>Away Free Kicks</th>
 	<th>Home Penalties</th>
 	<th>Away Penalties</th>
+    <th>Home Corners</th>
+	<th>Away Corners</th>
 </tr>
 
 	<% @statistics.each do |statistic| %>
@@ -27,5 +29,7 @@
 	<th><%= statistic.afk %></th>	
 	<th><%= statistic.hpen %></th>
 	<th><%= statistic.apen %></th>
+	<th><%= statistic.hko %></th>
+	<th><%= statistic.ako %></th>
 </tr>
 	<% end %>
