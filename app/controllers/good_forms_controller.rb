@@ -7,7 +7,7 @@ class GoodFormsController < ApplicationController
 	def show
 		@team        = Team.find(params[:id])
 		#@league     = League.find()
-		@games       = Game.where("team1 = ? OR team2 = ?", @team.id) #Returns an array
+		@games       = Game.where("team1 = ? OR team2 = ?", @team.id, @team.id) #Returns an array
 		#@statistics = @game.first.statistics
 		#@statistics = Statistics.find_by_gameid(@game.first.hometeamid) # find the statistics for the first game.
 	end
