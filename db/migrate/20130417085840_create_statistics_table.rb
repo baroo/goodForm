@@ -1,7 +1,7 @@
 class CreateStatisticsTable < ActiveRecord::Migration
   def up
     create_table :statistics do |t|
-	  t.timestamp :gametime
+	  t.integer :gametime
       t.timestamp :seentime
       t.integer :game_id
       t.integer :hpn
