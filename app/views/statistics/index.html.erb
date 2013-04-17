@@ -15,14 +15,17 @@
 	<th>Home Penalties</th>
 	<th>Away Penalties</th>
 </tr>
+
+	<% @statistics.each do |statistic| %>
 <tr>
-	<th><%= @statistics.last.gametime %></th>
-	<th><%= @statistics.last.seentime %></th>
-	<th><%= @statistics.last.game_id %></th>
-	<th><%= @statistics.last.hg %></th>
-	<th><%= @statistics.last.ag %></th>
-	<th><%= @statistics.last.hfk %></th>
-	<th><%= @statistics.last.afk %></th>	
-	<th><%= @statistics.last.hpen %></th>
-	<th><%= @statistics.last.apen %></th>
+	<th><%= statistic.gametime %></th>
+	<th><%= statistic.seentime %></th>
+	<th><%= statistic...game_id %></th>
+	<th><%= statistic.hg %></th>
+	<th><%= statistic.ag %></th>
+	<th><%= statistic.hfk %></th>
+	<th><%= statistic.afk %></th>	
+	<th><%= statistic.hpen %></th>
+	<th><%= statistic.apen %></th>
 </tr>
+	<% end %>
