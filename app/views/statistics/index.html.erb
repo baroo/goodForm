@@ -6,30 +6,30 @@
 <!-- <%= debug  @statistics %> -->
 <tr>
 	<th>Game Time</th>
-	<th>Seen Time</th>
-	<th>Game ID</th>
 	<th>Home Goals</th>
 	<th>Away Goals</th>
 	<th>Home Free Kicks</th>
 	<th>Away Free Kicks</th>
 	<th>Home Penalties</th>
 	<th>Away Penalties</th>
-    <th>Home Corners</th>
-	<th>Away Corners</th>
+    <th>Home Dangerous Attacks</th>
+	<th>Away Dangerous Attacks</th>
+	<th>Home Shots On Target</th>
+	<th>Away Shots On Target</th>
 </tr>
 
 	<% @statistics.each do |statistic| %>
 <tr>
 	<th><%= statistic.gametime %></th>
-	<th><%= statistic.seentime %></th>
-	<th><%= statistic.game_id %></th>
 	<th><%= statistic.hg %></th>
 	<th><%= statistic.ag %></th>
 	<th><%= statistic.hfk %></th>
 	<th><%= statistic.afk %></th>	
 	<th><%= statistic.hpen %></th>
 	<th><%= statistic.apen %></th>
-	<th><%= statistic.hco %></th>
-	<th><%= statistic.aco %></th>
+	<th><%= statistic.hda %></th>
+	<th><%= statistic.ada %></th>
+	<th><%= statistic.hsont %></th>
+	<th><%= statistic.asont %></th>	
 </tr>
 	<% end %>
