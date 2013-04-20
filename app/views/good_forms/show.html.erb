@@ -12,7 +12,7 @@
 	<th>AWAY TEAM</th>
 	<th>STATS</th>
 </tr>
-	<% @games.each do |game| %>
+	<% @gamesSorted.each do |game| %>
 <tr>
 	<td><%= game.id %></td>
 	<td><%= game.league.name %></td>
