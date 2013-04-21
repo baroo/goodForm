@@ -1,11 +1,21 @@
 <h1>Good Form - Teams</h1>
 
+<a name"top"></a>
+
 <%= form_tag goodForms_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
+
+
+<tr>
+	<th>Max Home Goals Scored</th>
+	<th><%= @maxHg %></th>
+	<th>Name</th>
+	<th><%= @team1 %></th>
+</tr>
 
 <ul>
 
@@ -16,5 +26,7 @@
 <% end %>
 
 </ul>
+
+<a href="#top">Back To Top</a>
 
 
