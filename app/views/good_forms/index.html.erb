@@ -1,13 +1,29 @@
 <h1>Good Form - Teams</h1>
 
-<a name"top"></a>
+<table border="1">
+<tr>
+<td>Teams Analysed</td>
+<td>Leagues Covered</td>
+<td>Games Seen</td>
+<td>Statistics Available</td>
+</tr>
+<tr>
+<td><%=@numberOfTeams %></td>
+<td><%=@numberOfLeagues %></td>
+<td><%=@NumberOfGames %></td>
+<td><%=@numberOfStatistics %></td>
+</tr>
+</table> 
 
+<a name"top"></a>
+<a href="#bottom">Go to End</a>
 <%= form_tag goodForms_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
+
 
 <ul>
 
@@ -20,5 +36,6 @@
 </ul>
 
 <a href="#top">Back To Top</a>
+<a name"bottom"></a>
 
 
