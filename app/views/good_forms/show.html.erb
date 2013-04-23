@@ -17,10 +17,11 @@
 	<td><%= game.id %></td>
 	<td><%= game.league.name %></td>
 	<td><%= game.kodate %></td>
-	<td><%= game.team1.name %></td>
-	<td><%= game.team2.name %></td>
+	<td><%= link_to game.team1.name, goodForm_path(game.team1)%></td>
+	<td><%= link_to game.team2.name, goodForm_path(game.team2) %></td>
 	<td><%= link_to "Click for Stats", goodForm_statistics_path(game)%></td>
+
 </tr>
 	<% end %>
-
+	
 <small><%= @team.created_at %></small>
