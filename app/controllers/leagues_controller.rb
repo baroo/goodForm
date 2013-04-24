@@ -5,8 +5,9 @@ class LeaguesController < ApplicationController
 	
 	def show
 		@league = League.where("id = ?", params[:goodForm_id])
-		@teams = @league.first.teams
-		#@teams = @tempTeams.sort_by{ | teamName | teamName.name }
+		@tempTeams = @league.first.teams
+		@sortedTeams = @tempTeams.sort_by{ | teamName | teamName.name }
+		@teams = @sortedTeams.uniq
 	end
 	
 	def new
