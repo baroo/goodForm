@@ -15,12 +15,11 @@
 	<% @gamesSorted.each do |game| %>
 <tr>
 	<td><%= game.id %></td>
-	<td><%= game.league.name %></td>
+	<td><%= link_to game.league.name, goodForm_league_path(game.league_id) %></td>
 	<td><%= game.kodate %></td>
 	<td><%= link_to game.team1.name, goodForm_path(game.team1)%></td>
 	<td><%= link_to game.team2.name, goodForm_path(game.team2) %></td>
 	<td><%= link_to "Click for Stats", goodForm_statistics_path(game)%></td>
-
 </tr>
 	<% end %>
 	
