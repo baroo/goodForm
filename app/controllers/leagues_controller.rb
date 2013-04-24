@@ -5,14 +5,8 @@ class LeaguesController < ApplicationController
 	
 	def show
 		@league = League.where("id = ?", params[:goodForm_id])
-		@teams = @league.first.teams
-		#@statistics = Statistic.where("game_id = ?", params[:goodForm_id]).reverse_order #Returns an array)
-		#@team        = Team.find(params[:id])
-		#@league     = League.find()
-		#@games       = Game.where("team1 = ? OR team2 = ?", @team.id, @team.id) #Returns an array 
-		#@gamesSorted = @games.all(:order => "kodate DESC")
-		#@statistics = Statistics.find_by_gameid(@game.first.hometeamid) # find the statistics for the first game.
-		#@teamsInSameleague = Team.where("name = ?", @games.first.league.name)
+		@tempTeams = @league.first.teams
+		@teams = @tempTeams.sort_by{ | teamName | teamName.name }
 	end
 	
 	def new
