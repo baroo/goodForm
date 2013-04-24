@@ -14,7 +14,6 @@ class GoodFormsController < ApplicationController
 	
 	def show
 		@team        = Team.find(params[:id])
-		@league      = 2
 		@games       = Game.where("team1 = ? OR team2 = ?", @team.id, @team.id) #Returns an array 
 		@gamesSorted = @games.all(:order => "kodate DESC")
 		#@statistics = Statistics.find_by_gameid(@game.first.hometeamid) # find the statistics for the first game.
