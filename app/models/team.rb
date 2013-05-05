@@ -3,7 +3,7 @@ class Team < ActiveRecord::Base
   
   def self.search(search)
 	if search
-		find(:all, :conditions => ['lower(name) LIKE ?', "%#{search.downcase}%"])
+		find(:all, :conditions => ['lower(name) LIKE ?', "%#{search.downcase}%"], :order => 'name DESC')
 #	else
 #	find(:all)
 	end
