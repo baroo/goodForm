@@ -3,6 +3,7 @@ class GoodFormsController < ApplicationController
 	def index
 		
 		@teams = Team.search(params[:search])
+		@leagues = League.search(params[:leagueSearch])
 		#@tempTeams = Team.search(params[:search])
 		#@teams = @tempTeams.sort_by{ | teamName | teamName.name }
 		@statsRow = Statistic.find(:first, :order => 'hg DESC') #Get the whole Row with the largest HG value

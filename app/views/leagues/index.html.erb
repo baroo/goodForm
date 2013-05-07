@@ -1,0 +1,7 @@
+<h1><%= @league.first.name %>: Teams</h1>
+
+<% for team in @teams %>
+	<li>
+		<%= link_to team.name, goodForm_path(team)%>
+	</li>
+<% end %>

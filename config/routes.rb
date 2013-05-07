@@ -6,7 +6,7 @@ GoodForm::Application.routes.draw do
 
   resources :goodForms do
 	resources :leagues
-	resources :statistics 
+	resources :statistics
   end
 
   

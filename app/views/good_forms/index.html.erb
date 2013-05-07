@@ -24,13 +24,27 @@
   </p>
 <% end %>
 
-<ul>
+<%= form_tag goodForms_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :leagueSearch, params[:leagueSearch] %>
+    <%= submit_tag "Search Leagues", :name => nil %>
+  </p>
+<% end %>
 
+<ul>
 
 <%unless @teams == nil %>
 	<% for team in @teams %>
 		<li>
 			<%= link_to team.name, goodForm_path(team.id) %>
+		</li>
+	<% end %>
+<% end %>
+
+<%unless @leagues == nil %>
+	<% for league in @leagues %>
+		<li>
+			<%= link_to league.name, goodForm_leagues_path(league.id) %>
 		</li>
 	<% end %>
 <% end %>
