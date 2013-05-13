@@ -5,10 +5,7 @@ class Game < ActiveRecord::Base
   has_one :team1, :class_name => "Team", :primary_key =>"team1", :foreign_key => "id"
   has_one :team2, :class_name => "Team", :primary_key =>"team2", :foreign_key => "id"
   
-  @t = Date.today
-  @today = @t.strftime("%Y-%m-%d")
-  
    def self.search()
-		where("kodate = ?", @today )
+		where(:kodate => (Time.now - 1.day)..Time.now )
 	end
 end
