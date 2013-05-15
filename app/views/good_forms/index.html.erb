@@ -51,6 +51,22 @@
 
 </ul> 
 
+<p>Today's Games:</p>
+
+<%unless @gamesForToday == nil %>
+	<% for game in @gamesForToday %>
+		<%= game.id %>
+		<li>
+			<%unless @game.team1.name == nil %>
+				<%= link_to game.team1.name, goodForm_path(game.team1) %>
+			<% end %>
+			Vs
+			<%unless @game.team1.name == nil %>
+				<%= link_to game.team2.name, goodForm_path(game.team2) %>
+			<% end %>
+		</li>
+	<% end %>
+<% end %>
 
 <a href="#top">Back To Top</a>
 
