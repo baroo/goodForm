@@ -55,7 +55,7 @@
 <%unless @gamesForToday == nil %>
 	<% for game in @gamesForToday %>
 		<li>
-			<%unless game == nil %>
+			<%unless game.team1 || game.team2 == nil %>
 				<%= link_to game.team1.name, goodForm_path(game.team1) %>
 				Vs
 				<%= link_to game.team2.name, goodForm_path(game.team2) %>
