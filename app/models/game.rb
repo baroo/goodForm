@@ -7,6 +7,6 @@ class Game < ActiveRecord::Base
   has_one :team2, :class_name => "Team", :primary_key =>"team2", :foreign_key => "id"
   
    def self.search()
-		where(:kodate => (Time.now - 2.hours)..Time.now )
+		where(:kodate => (Time.now - 2.hours)..Time.now ).order('kodate DESC')
 	end
 end
