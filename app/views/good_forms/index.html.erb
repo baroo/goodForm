@@ -49,7 +49,9 @@
 	<% end %>
 <% end %>
 
-<p>Current games (or games in the last 2 hours):</p>
+<p><b>Current Forms Date and Time: <%= Time.now =%> </b></p>
+
+<p><b>Current Games</b> (or games in the last 2 hours):</p>
 
 <%unless @gamesForToday == nil %>
 	<% for game in @gamesForToday %>
