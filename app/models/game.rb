@@ -6,7 +6,8 @@ class Game < ActiveRecord::Base
   has_one :team1, :class_name => "Team", :primary_key =>"team1", :foreign_key => "id"
   has_one :team2, :class_name => "Team", :primary_key =>"team2", :foreign_key => "id"
   
+  #This needs sorting out with zones.
    def self.search()
-		where(:kodate => (Time.now - 2.hours)..Time.now ).order('kodate DESC')
+		where(:kodate => (Time.now - 1.hour)..Time.now ).order('kodate DESC')
 	end
 end
