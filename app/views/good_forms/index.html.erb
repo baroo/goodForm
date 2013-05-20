@@ -1,6 +1,8 @@
 <h1>Good Form</h1>
 
-<p>Time: <%= Time.zone.now =%> </p>
+<% d = Time.zone.now %>
+
+<p>Time: <%= d.strftime('%b %d, %Y %H:%M:%S') =%> </p>
 
 <table border="1">
 <tr>
