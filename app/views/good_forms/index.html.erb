@@ -67,6 +67,7 @@
 			<%unless game.team2 == nil %>	
 				<%= link_to game.team2.name, goodForm_path(game.team2) %>
 			<% end %>
+			:  <%= link_to "Click for Stats", goodForm_statistics_path(game)%>
 		</li>
 	<% end %>
 <% end %>
