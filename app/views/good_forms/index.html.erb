@@ -57,23 +57,29 @@
 
 <p><b>Current Games</b> (or games in the last 2 hours):</p>
 
+<table border="1">
+
+<tr>
+	<th>Home</th>
+	<th>Away</th>
+	<th>Stats</th>
+</tr>
+
 <%unless @gamesForToday == nil %>
 	<% for game in @gamesForToday %>
-		<li>
+		<tr>
 			<%unless game.team1 == nil %>
-				<%= link_to game.team1.name, goodForm_path(game.team1) %>
+				<td><%= link_to game.team1.name, goodForm_path(game.team1) %></td>
 			<% end %>
-				Vs
 			<%unless game.team2 == nil %>	
-				<%= link_to game.team2.name, goodForm_path(game.team2) %>
+				<td><%= link_to game.team2.name, goodForm_path(game.team2) %></td>
 			<% end %>
-			:  <%= link_to "Click for Stats", goodForm_statistics_path(game)%>
-		</li>
+			<td><%= link_to "Click for Stats", goodForm_statistics_path(game)%></td>
+		</tr>
 	<% end %>
 <% end %>
 
-
-
+</table>
 
 <a href="#top">Back To Top</a>
 
