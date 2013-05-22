@@ -60,6 +60,7 @@
 <table border="1">
 
 <tr>
+	<th>Kick Off Time</th>
 	<th>Home</th>
 	<th>Away</th>
 	<th>Stats</th>
@@ -68,6 +69,7 @@
 <%unless @gamesForToday == nil %>
 	<% for game in @gamesForToday %>
 		<tr>
+			<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
 			<%unless game.team1 == nil %>
 				<td><%= link_to game.team1.name, goodForm_path(game.team1) %></td>
 			<% end %>
