@@ -66,7 +66,7 @@ module GoodForm
 	
 	config.assets.initialize_on_precompile = false
 	
-	config.assets.precompile += ['jquery-1.10.0.min.js', 'rails.js']
+	config.assets.precompile += ['jquery-1.10.0.min.js', 'rails.js', 'highcharts.js']
 	
   end
 end
