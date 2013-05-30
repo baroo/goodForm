@@ -1,5 +1,42 @@
 <h1> <%= @team1 %> (<%= @statistics.first.hg %>) : <%= @team2 %> (<%= @statistics.first.ag %>)</h1>
 
+<script type="text/javascript" charset="utf-8">
+	$(function()
+	{
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "statistics_chart"
+			},
+			title:
+			{
+				text: "Home Dangerous Attacks"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				title:
+				{
+					text: "Number of Attacks"
+				}
+			},
+			series: 
+			[
+				{
+					data: <%= @statistics.map(&:hda).to_json %>
+				}
+			]
+		});
+	});	
+</script>
+
+<div id="statistics_chart" style="width:560px; height:300px;"></div>
+
+
 <table border="1">
 
 <!-- <%= debug  params %> -->
