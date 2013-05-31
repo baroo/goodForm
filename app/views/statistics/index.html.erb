@@ -19,6 +19,7 @@
 			},
 			yAxis:
 			{
+				min: 0,
 				title:
 				{
 					text: "Number of Attacks"
@@ -27,7 +28,7 @@
 			series: 
 			[
 				{
-					data: <%= @statistics.map(&:hda).to_json %>
+					data: <%= @statistics.reverse_each.map(&:hda).to_json %>
 				}
 			]
 		});
