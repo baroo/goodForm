@@ -25,11 +25,19 @@
 					text: "Number of Attacks"
 				}
 			},
+            tooltip: {
+                valueSuffix: ' attacks'
+            },
 			series: 
 			[
 				{
+					name: 'Home Dangerous Attacks',
 					data: <%= @statistics.reverse_each.map(&:hda).to_json %>
-				}
+				},
+				{
+					name: 'Away dangerous Attacks',
+					data: <%= @statistics.reverse_each.map(&:ada).to_json %>
+				},
 			]
 		});
 	});	
