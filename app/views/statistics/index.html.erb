@@ -11,7 +11,7 @@
 			},
 			title:
 			{
-				text: "Home Dangerous Attacks"
+				text: "Dangerous Attacks"
 			},
 			xAxis:
 			{
@@ -40,10 +40,86 @@
 				},
 			]
 		});
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "shots_on_target_chart"
+			},
+			title:
+			{
+				text: "Shots on Target"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Shots"
+				}
+			},
+            tooltip: {
+                valueSuffix: ' shots'
+            },
+			series: 
+			[
+				{
+					name: 'Home Shots on Target',
+					data: <%= @statistics.reverse_each.map(&:hsont).to_json %>
+				},
+				{
+					name: 'Away Shots on Target',
+					data: <%= @statistics.reverse_each.map(&:asont).to_json %>
+				},
+			]
+		});
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "corners_chart"
+			},
+			title:
+			{
+				text: "Corners"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Corners"
+				}
+			},
+            tooltip: {
+                valueSuffix: ' corners'
+            },
+			series: 
+			[
+				{
+					name: 'Home Corners',
+					data: <%= @statistics.reverse_each.map(&:hco).to_json %>
+				},
+				{
+					name: 'Away Corners',
+					data: <%= @statistics.reverse_each.map(&:aco).to_json %>
+				},
+			]
+		});
 	});	
 </script>
 
 <div id="statistics_chart" style="width:560px; height:300px;"></div>
+<div id="shots_on_target_chart" style="width:560px; height:300px;"></div>
+<div id="corners_chart" style="width:560px; height:300px;"></div>
 
 
 <table border="1">
