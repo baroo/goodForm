@@ -22,11 +22,11 @@
 				min: 0,
 				title:
 				{
-					text: "Number of Attacks"
+					text: "Number of Dangerous Attacks"
 				}
 			},
             tooltip: {
-                valueSuffix: ' attacks'
+                valueSuffix: ' dangerous attacks'
             },
 			series: 
 			[
@@ -37,6 +37,43 @@
 				{
 					name: 'Away dangerous Attacks',
 					data: <%= @statistics.reverse_each.map(&:ada).to_json %>
+				},
+			]
+		});
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "attacks_chart"
+			},
+			title:
+			{
+				text: "Attacks"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Number of Attacks"
+				}
+			},
+            tooltip: {
+                valueSuffix: ' attacks'
+            },
+			series: 
+			[
+				{
+					name: 'Home  Attacks',
+					data: <%= @statistics.reverse_each.map(&:ha).to_json %>
+				},
+				{
+					name: 'Away  Attacks',
+					data: <%= @statistics.reverse_each.map(&:aa).to_json %>
 				},
 			]
 		});
@@ -59,11 +96,11 @@
 				min: 0,
 				title:
 				{
-					text: "Shots"
+					text: "Shots on Target"
 				}
 			},
             tooltip: {
-                valueSuffix: ' shots'
+                valueSuffix: ' shots on target'
             },
 			series: 
 			[
@@ -74,6 +111,43 @@
 				{
 					name: 'Away Shots on Target',
 					data: <%= @statistics.reverse_each.map(&:asont).to_json %>
+				},
+			]
+		});
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "shots_off_target_chart"
+			},
+			title:
+			{
+				text: "Shots off Target"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Shots off Target"
+				}
+			},
+            tooltip: {
+                valueSuffix: ' shots off target'
+            },
+			series: 
+			[
+				{
+					name: 'Home Shots off Target',
+					data: <%= @statistics.reverse_each.map(&:hsofft).to_json %>
+				},
+				{
+					name: 'Away Shots off Target',
+					data: <%= @statistics.reverse_each.map(&:asofft).to_json %>
 				},
 			]
 		});
@@ -118,8 +192,11 @@
 </script>
 
 <div id="statistics_chart" style="width:560px; height:300px;"></div>
+<div id="attacks_chart" style="width:560px; height:300px;"></div>
 <div id="shots_on_target_chart" style="width:560px; height:300px;"></div>
+<div id="shots_off_target_chart" style="width:560px; height:300px;"></div>
 <div id="corners_chart" style="width:560px; height:300px;"></div>
+
 
 
 <table border="1">
