@@ -1,6 +1,61 @@
 <h1> <%= @team1 %> (<%= @statistics.first.hg %>) : <%= @team2 %> (<%= @statistics.first.ag %>)</h1>
 
-<script type="text/javascript" charset="utf-8">
+ <script type="text/javascript" charset="utf-8">
+
+	new Highcharts.Chart(
+	{
+         chart: 
+		{
+			type: 'bar',
+			renderTo: "container"
+        },
+        title: 
+		{
+            text: 'Game Summary'
+         },
+        xAxis: 
+		{
+            categories: ['Attacks', 'Dangerous Attacks', 'Shots On Target', 'Shots Off Target', 'Corners']
+			
+        },
+        yAxis: 
+		{
+			min: 0,
+            title: 
+			{
+                text: 'Data'
+            }
+        },
+        legend: 
+		{
+            backgroundColor: '#FFFFFF',
+            reversed: true
+        },
+        plotOptions: 
+		{
+            series: 
+			{
+                stacking: 'normal'
+            }
+        },
+            series:
+			[
+				{
+					name: 'Home',
+					data: [<%= @finalHomeAttacksAsPercentage %>, <%= @finalHomeDangerousAttacksAsPercentage %>, 
+						   <%= @finalHomeShotsOnTargetAsPercentage %>, <%= @finalHomeShotsOffTargetAsPercentage %>, 
+						   <%= @finalHomeCornersAsPercentage %>]
+				}, 
+				{
+					name: 'Away',
+					data: [<%= @finalAwayAttacksAsPercentage %>, <%= @finalAwayDangerousAttacksAsPercentage %>, 
+					       <%= @finalAwayShotsOnTargetAsPercentage %>, <%= @finalAwayShotsOffTargetAsPercentage %>, 
+						   <%= @finalAwayCornersAsPercentage %>]
+				}
+			]
+	});
+
+	
 	$(function()
 	{
 		new Highcharts.Chart(
@@ -25,9 +80,7 @@
 					text: "Number of Dangerous Attacks"
 				}
 			},
-            tooltip: {
-                valueSuffix: ' dangerous attacks'
-            },
+
 			series: 
 			[
 				{
@@ -35,11 +88,12 @@
 					data: <%= @statistics.reverse_each.map(&:hda).to_json %>
 				},
 				{
-					name: 'Away dangerous Attacks',
+					name: 'Away Dangerous Attacks',
 					data: <%= @statistics.reverse_each.map(&:ada).to_json %>
 				},
 			]
 		});
+
 		new Highcharts.Chart(
 		{
 			chart:
@@ -62,9 +116,6 @@
 					text: "Number of Attacks"
 				}
 			},
-            tooltip: {
-                valueSuffix: ' attacks'
-            },
 			series: 
 			[
 				{
@@ -99,9 +150,6 @@
 					text: "Shots on Target"
 				}
 			},
-            tooltip: {
-                valueSuffix: ' shots on target'
-            },
 			series: 
 			[
 				{
@@ -136,9 +184,6 @@
 					text: "Shots off Target"
 				}
 			},
-            tooltip: {
-                valueSuffix: ' shots off target'
-            },
 			series: 
 			[
 				{
@@ -173,9 +218,6 @@
 					text: "Corners"
 				}
 			},
-            tooltip: {
-                valueSuffix: ' corners'
-            },
 			series: 
 			[
 				{
@@ -191,13 +233,12 @@
 	});	
 </script>
 
+<div id="container" style="width: 400px; height: 300px;"></div>
 <div id="statistics_chart" style="width:560px; height:300px;"></div>
 <div id="attacks_chart" style="width:560px; height:300px;"></div>
 <div id="shots_on_target_chart" style="width:560px; height:300px;"></div>
 <div id="shots_off_target_chart" style="width:560px; height:300px;"></div>
 <div id="corners_chart" style="width:560px; height:300px;"></div>
-
-
 
 <table border="1">
 
