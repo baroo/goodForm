@@ -32,6 +32,12 @@ class StatisticsController < ApplicationController
 			@finalHomeCornersAsPercentage = (@finalStats.hco.to_f / @totalCorners) * 100
 			@finalAwayCornersAsPercentage = (@finalStats.aco.to_f / @totalCorners) * 100
 			
+			@homeNegativeAttacks          = -@finalStats.ha
+			@homeNegativeDangerousAttacks = -@finalStats.hda
+			@homeNegativeShotsOnTarget    = -@finalStats.hsont
+			@homeNegativeShotsOffTarget   = -@finalStats.hsofft
+			@homeNegativeCorners          = -@finalStats.hco
+			
 			
 			
 			

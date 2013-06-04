@@ -1,244 +1,96 @@
 <h1> <%= @team1 %> (<%= @statistics.first.hg %>) : <%= @team2 %> (<%= @statistics.first.ag %>)</h1>
 
- <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
 
-	new Highcharts.Chart(
+$(function () 
+{
+    categories = ['Attacks', 'Dangerous Attacks', 'Shots on Target', 'Shots off Target', 'Corners'];
+    
+	$(document).ready(function() 
 	{
-         chart: 
+        new Highcharts.Chart(
 		{
-			type: 'bar',
-			renderTo: "container"
-        },
-        title: 
-		{
-            text: 'Game Summary'
-         },
-        xAxis: 
-		{
-            categories: ['Attacks', 'Dangerous Attacks', 'Shots On Target', 'Shots Off Target', 'Corners']
-			
-        },
-        yAxis: 
-		{
-			min: 0,
+            chart: 
+			{
+                type: 'bar',
+				renderTo: "container"
+            },
             title: 
 			{
-                text: 'Data'
-            }
-        },
-        legend: 
-		{
-            backgroundColor: '#FFFFFF',
-            reversed: true
-        },
-        plotOptions: 
-		{
-            series: 
+                text: 'Game Statistics for <%=@team1 %> (<%= @statistics.first.hg %>) vs  <%= @team2 %> (<%= @statistics.first.ag %>)'
+            },
+            subtitle: 
 			{
-                stacking: 'normal'
-            }
-        },
-            series:
+                text: 'Good Form'
+            },
+            xAxis: 
 			[
 				{
-					name: 'Home',
-					data: [<%= @finalHomeAttacksAsPercentage %>, <%= @finalHomeDangerousAttacksAsPercentage %>, 
-						   <%= @finalHomeShotsOnTargetAsPercentage %>, <%= @finalHomeShotsOffTargetAsPercentage %>, 
-						   <%= @finalHomeCornersAsPercentage %>]
+					categories: categories,
+					reversed: false
 				}, 
-				{
-					name: 'Away',
-					data: [<%= @finalAwayAttacksAsPercentage %>, <%= @finalAwayDangerousAttacksAsPercentage %>, 
-					       <%= @finalAwayShotsOnTargetAsPercentage %>, <%= @finalAwayShotsOffTargetAsPercentage %>, 
-						   <%= @finalAwayCornersAsPercentage %>]
+				{ // mirror axis on right side
+					opposite: true,
+					reversed: false,
+					categories: categories,
+					linkedTo: 0
 				}
-			]
-	});
-
-	
-	$(function()
-	{
-		new Highcharts.Chart(
-		{
-			chart:
+			],
+            yAxis: 
 			{
-				renderTo: "statistics_chart"
-			},
-			title:
-			{
-				text: "Dangerous Attacks"
-			},
-			xAxis:
-			{
-				type: "integer"
-			},
-			yAxis:
-			{
-				min: 0,
-				title:
+                title: 
 				{
-					text: "Number of Dangerous Attacks"
-				}
-			},
-
-			series: 
-			[
+                    text: null
+                },
+                labels: 
 				{
-					name: 'Home Dangerous Attacks',
-					data: <%= @statistics.reverse_each.map(&:hda).to_json %>
-				},
-				{
-					name: 'Away Dangerous Attacks',
-					data: <%= @statistics.reverse_each.map(&:ada).to_json %>
-				},
-			]
-		});
-
-		new Highcharts.Chart(
-		{
-			chart:
+                    formatter: function()
+					{
+                        return (Math.abs(this.value));
+                    }
+                },
+                min: -70,
+                max: 70
+            },
+    
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
+    
+            tooltip: {
+                formatter: function(){
+                         return '<b>'+ this.series.name +' '+ this.point.category +'</b><br/>'+
+                         Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                }
+            },
+    
+            series: [
 			{
-				renderTo: "attacks_chart"
-			},
-			title:
+                name: 'Home',
+				color: '#006600',
+                data: [<%= @homeNegativeAttacks %>, <%= @homeNegativeDangerousAttacks %>, 
+						   <%= @homeNegativeShotsOnTarget%>, <%= @homeNegativeShotsOffTarget%>, 
+						   <%= @homeNegativeCorners %>]
+            }, 
 			{
-				text: "Attacks"
-			},
-			xAxis:
-			{
-				type: "integer"
-			},
-			yAxis:
-			{
-				min: 0,
-				title:
-				{
-					text: "Number of Attacks"
-				}
-			},
-			series: 
-			[
-				{
-					name: 'Home  Attacks',
-					data: <%= @statistics.reverse_each.map(&:ha).to_json %>
-				},
-				{
-					name: 'Away  Attacks',
-					data: <%= @statistics.reverse_each.map(&:aa).to_json %>
-				},
-			]
-		});
-		new Highcharts.Chart(
-		{
-			chart:
-			{
-				renderTo: "shots_on_target_chart"
-			},
-			title:
-			{
-				text: "Shots on Target"
-			},
-			xAxis:
-			{
-				type: "integer"
-			},
-			yAxis:
-			{
-				min: 0,
-				title:
-				{
-					text: "Shots on Target"
-				}
-			},
-			series: 
-			[
-				{
-					name: 'Home Shots on Target',
-					data: <%= @statistics.reverse_each.map(&:hsont).to_json %>
-				},
-				{
-					name: 'Away Shots on Target',
-					data: <%= @statistics.reverse_each.map(&:asont).to_json %>
-				},
-			]
-		});
-		new Highcharts.Chart(
-		{
-			chart:
-			{
-				renderTo: "shots_off_target_chart"
-			},
-			title:
-			{
-				text: "Shots off Target"
-			},
-			xAxis:
-			{
-				type: "integer"
-			},
-			yAxis:
-			{
-				min: 0,
-				title:
-				{
-					text: "Shots off Target"
-				}
-			},
-			series: 
-			[
-				{
-					name: 'Home Shots off Target',
-					data: <%= @statistics.reverse_each.map(&:hsofft).to_json %>
-				},
-				{
-					name: 'Away Shots off Target',
-					data: <%= @statistics.reverse_each.map(&:asofft).to_json %>
-				},
-			]
-		});
-		new Highcharts.Chart(
-		{
-			chart:
-			{
-				renderTo: "corners_chart"
-			},
-			title:
-			{
-				text: "Corners"
-			},
-			xAxis:
-			{
-				type: "integer"
-			},
-			yAxis:
-			{
-				min: 0,
-				title:
-				{
-					text: "Corners"
-				}
-			},
-			series: 
-			[
-				{
-					name: 'Home Corners',
-					data: <%= @statistics.reverse_each.map(&:hco).to_json %>
-				},
-				{
-					name: 'Away Corners',
-					data: <%= @statistics.reverse_each.map(&:aco).to_json %>
-				},
-			]
-		});
-	});	
+                name: 'Away',
+                data: [<%= @finalStats.aa %>, <%= @finalStats.ada %>, 
+						   <%= @finalStats.asont%>, <%= @finalStats.asofft %>, 
+						   <%= @finalStats.aco %>]
+            }]
+        });
+    });
+});
 </script>
 
-<div id="container" style="width: 400px; height: 300px;"></div>
 <div id="statistics_chart" style="width:560px; height:300px;"></div>
 <div id="attacks_chart" style="width:560px; height:300px;"></div>
 <div id="shots_on_target_chart" style="width:560px; height:300px;"></div>
 <div id="shots_off_target_chart" style="width:560px; height:300px;"></div>
 <div id="corners_chart" style="width:560px; height:300px;"></div>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
 <table border="1">
 
