@@ -1,88 +1,237 @@
 <h1> <%= @team1 %> (<%= @statistics.first.hg %>) : <%= @team2 %> (<%= @statistics.first.ag %>)</h1>
 
-<script type="text/javascript" charset="utf-8">
+ <script type="text/javascript" charset="utf-8">
 
-$(function () 
-{
-    categories = ['Attacks', 'Dangerous Attacks', 'Shots on Target', 'Shots off Target', 'Corners'];
-    
-	$(document).ready(function() 
+ 	new Highcharts.Chart(
 	{
-        new Highcharts.Chart(
+         chart: 
 		{
-            chart: 
-			{
-                type: 'bar',
-				renderTo: "container"
-            },
+			type: 'bar',
+			renderTo: "container"
+        },
+        title: 
+		{
+            text: 'Game Statistics for <%=@team1 %> (<%= @statistics.first.hg %>) vs  <%= @team2 %> (<%= @statistics.first.ag %>)'
+         },
+        xAxis: 
+		{
+            categories: ['Attacks', 'Dangerous Attacks', 'Shots On Target', 'Shots Off Target', 'Corners']
+			
+        },
+        yAxis: 
+		{
+			min: 0,
             title: 
 			{
-                text: 'Game Statistics for <%=@team1 %> (<%= @statistics.first.hg %>) vs  <%= @team2 %> (<%= @statistics.first.ag %>)'
-            },
-            subtitle: 
+                text: 'Data'
+            }
+        },
+        legend: 
+		{
+            backgroundColor: '#FFFFFF',
+            reversed: true
+        },
+        plotOptions: 
+		{
+            series: 
 			{
-                text: 'Good Form'
-            },
-            xAxis: 
+                stacking: 'normal'
+            }
+        },
+            series:
 			[
 				{
-					categories: categories,
-					reversed: false
+					name: 'Home',
+					data: [<%= @finalHomeAttacksAsPercentage %>, <%= @finalHomeDangerousAttacksAsPercentage %>, 
+						   <%= @finalHomeShotsOnTargetAsPercentage %>, <%= @finalHomeShotsOffTargetAsPercentage %>, 
+						   <%= @finalHomeCornersAsPercentage %>]
 				}, 
-				{ // mirror axis on right side
-					opposite: true,
-					reversed: false,
-					categories: categories,
-					linkedTo: 0
+				{
+					name: 'Away',
+					data: [<%= @finalAwayAttacksAsPercentage %>, <%= @finalAwayDangerousAttacksAsPercentage %>, 
+					       <%= @finalAwayShotsOnTargetAsPercentage %>, <%= @finalAwayShotsOffTargetAsPercentage %>, 
+						   <%= @finalAwayCornersAsPercentage %>]
 				}
-			],
-            yAxis: 
+			]
+	});
+ 
+ 
+	$(function()
+	{
+
+		new Highcharts.Chart(
+		{
+			chart:
 			{
-                title: 
+				renderTo: "statistics_chart"
+			},
+			title:
+			{
+				text: "Dangerous Attacks"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
 				{
-                    text: null
-                },
-                labels: 
+					text: "Number of Dangerous Attacks"
+				}
+			},
+
+			series: 
+			[
 				{
-                    formatter: function()
-					{
-                        return (Math.abs(this.value));
-                    }
-                },
-                min: -70,
-                max: 70
-            },
-    
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
-                }
-            },
-    
-            tooltip: {
-                formatter: function(){
-                         return '<b>'+ this.series.name +' '+ this.point.category +'</b><br/>'+
-                         Highcharts.numberFormat(Math.abs(this.point.y), 0);
-                }
-            },
-    
-            series: [
+					name: 'Home Dangerous Attacks',
+					data: <%= @statistics.reverse_each.map(&:hda).to_json %>
+				},
+				{
+					name: 'Away Dangerous Attacks',
+					data: <%= @statistics.reverse_each.map(&:ada).to_json %>
+				},
+			]
+		});
+
+		new Highcharts.Chart(
+		{
+			chart:
 			{
-                name: 'Home',
-				color: '#006600',
-                data: [<%= @homeNegativeAttacks %>, <%= @homeNegativeDangerousAttacks %>, 
-						   <%= @homeNegativeShotsOnTarget%>, <%= @homeNegativeShotsOffTarget%>, 
-						   <%= @homeNegativeCorners %>]
-            }, 
+				renderTo: "attacks_chart"
+			},
+			title:
 			{
-                name: 'Away',
-                data: [<%= @finalStats.aa %>, <%= @finalStats.ada %>, 
-						   <%= @finalStats.asont%>, <%= @finalStats.asofft %>, 
-						   <%= @finalStats.aco %>]
-            }]
-        });
-    });
-});
+				text: "Attacks"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Number of Attacks"
+				}
+			},
+			series: 
+			[
+				{
+					name: 'Home  Attacks',
+					data: <%= @statistics.reverse_each.map(&:ha).to_json %>
+				},
+				{
+					name: 'Away  Attacks',
+					data: <%= @statistics.reverse_each.map(&:aa).to_json %>
+				},
+			]
+		});
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "shots_on_target_chart"
+			},
+			title:
+			{
+				text: "Shots on Target"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Shots on Target"
+				}
+			},
+			series: 
+			[
+				{
+					name: 'Home Shots on Target',
+					data: <%= @statistics.reverse_each.map(&:hsont).to_json %>
+				},
+				{
+					name: 'Away Shots on Target',
+					data: <%= @statistics.reverse_each.map(&:asont).to_json %>
+				},
+			]
+		});
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "shots_off_target_chart"
+			},
+			title:
+			{
+				text: "Shots off Target"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Shots off Target"
+				}
+			},
+			series: 
+			[
+				{
+					name: 'Home Shots off Target',
+					data: <%= @statistics.reverse_each.map(&:hsofft).to_json %>
+				},
+				{
+					name: 'Away Shots off Target',
+					data: <%= @statistics.reverse_each.map(&:asofft).to_json %>
+				},
+			]
+		});
+		new Highcharts.Chart(
+		{
+			chart:
+			{
+				renderTo: "corners_chart"
+			},
+			title:
+			{
+				text: "Corners"
+			},
+			xAxis:
+			{
+				type: "integer"
+			},
+			yAxis:
+			{
+				min: 0,
+				title:
+				{
+					text: "Corners"
+				}
+			},
+			series: 
+			[
+				{
+					name: 'Home Corners',
+					data: <%= @statistics.reverse_each.map(&:hco).to_json %>
+				},
+				{
+					name: 'Away Corners',
+					data: <%= @statistics.reverse_each.map(&:aco).to_json %>
+				},
+			]
+		});
+	});	
 </script>
 
 <div id="statistics_chart" style="width:560px; height:300px;"></div>
