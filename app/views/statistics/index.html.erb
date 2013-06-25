@@ -30,28 +30,29 @@
         legend: 
 		{
             backgroundColor: '#FFFFFF',
-            reversed: false
+            reversed: true
         },
         plotOptions: 
 		{
             series: 
 			{
-                stacking: 'normal'
+                stacking: 'reversed'
             }
         },
             series:
 			[
 				{
-					name: 'Home',
-					data: [<%= @finalHomeAttacksAsPercentage %>, <%= @finalHomeDangerousAttacksAsPercentage %>, 
-						   <%= @finalHomeShotsOnTargetAsPercentage %>, <%= @finalHomeShotsOffTargetAsPercentage %>, 
-						   <%= @finalHomeCornersAsPercentage %>]
-				}, 
-				{
 					name: 'Away',
 					data: [<%= @finalAwayAttacksAsPercentage %>, <%= @finalAwayDangerousAttacksAsPercentage %>, 
 					       <%= @finalAwayShotsOnTargetAsPercentage %>, <%= @finalAwayShotsOffTargetAsPercentage %>, 
-						   <%= @finalAwayCornersAsPercentage %>]
+						   <%= @finalAwayCornersAsPercentage %> ],
+					color: 'black'
+				},
+				{
+					name: 'Home',
+					data: [<%= @finalHomeAttacksAsPercentage %>, <%= @finalHomeDangerousAttacksAsPercentage %>, 
+						   <%= @finalHomeShotsOnTargetAsPercentage %>, <%= @finalHomeShotsOffTargetAsPercentage %>, 
+						   <%= @finalHomeCornersAsPercentage %>],
 				}
 			]
 	});
