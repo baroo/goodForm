@@ -8,16 +8,31 @@
 		{
 			type: 'bar',
 			renderTo: "container",
-			reflow: false
+			reflow: false,
+			plotBackgroundColor: '#339900'
+			
         },
+		
+        tooltip: {
+            formatter: function() {
+                return 'The value for <b>'+ this.x +
+                    '</b> is <b>'+ this.y +'</b>';
+            }
+        },
+		
         title: 
 		{
-            text: 'Game Statistics for <%=@team1 %> (<%= @statistics.first.hg %>) vs  <%= @team2 %> (<%= @statistics.first.ag %>)'
+            text: 'Game Statistics for <%=@team1 %> (<%= @statistics.first.hg %>) vs  <%= @team2 %> (<%= @statistics.first.ag %>)',
+			style: 
+			{
+                color: '#000066',
+				fontSize: '25px',
+                fontWeight: 'bold'
+            }
          },
         xAxis: 
 		{
             categories: ['Attacks', 'Dangerous Attacks', 'Shots On Target', 'Shots Off Target', 'Corners']
-			
         },
         yAxis: 
 		{
@@ -26,7 +41,8 @@
             title: 
 			{
                 text: 'Percentage'
-            }
+            },
+			gridLineWidth: 0
         },
         legend: 
 		{
@@ -47,13 +63,14 @@
 					data: [<%= @finalAwayAttacksAsPercentage %>, <%= @finalAwayDangerousAttacksAsPercentage %>, 
 					       <%= @finalAwayShotsOnTargetAsPercentage %>, <%= @finalAwayShotsOffTargetAsPercentage %>, 
 						   <%= @finalAwayCornersAsPercentage %> ],
-					color: 'black'
+					color: '#0066CC'
 				},
 				{
 					name: 'Home',
 					data: [<%= @finalHomeAttacksAsPercentage %>, <%= @finalHomeDangerousAttacksAsPercentage %>, 
 						   <%= @finalHomeShotsOnTargetAsPercentage %>, <%= @finalHomeShotsOffTargetAsPercentage %>, 
 						   <%= @finalHomeCornersAsPercentage %>],
+					color: '#CC0000'
 				}
 			]
 
@@ -90,11 +107,13 @@
 			[
 				{
 					name: 'Home Dangerous Attacks',
-					data: <%= @statistics.reverse_each.map(&:hda).to_json %>
+					data: <%= @statistics.reverse_each.map(&:hda).to_json %>,
+					color: '#CC0000'
 				},
 				{
 					name: 'Away Dangerous Attacks',
-					data: <%= @statistics.reverse_each.map(&:ada).to_json %>
+					data: <%= @statistics.reverse_each.map(&:ada).to_json %>,
+					color: '#0066CC'
 				},
 			]
 		});
@@ -125,11 +144,13 @@
 			[
 				{
 					name: 'Home  Attacks',
-					data: <%= @statistics.reverse_each.map(&:ha).to_json %>
+					data: <%= @statistics.reverse_each.map(&:ha).to_json %>,
+					color: '#CC0000'
 				},
 				{
 					name: 'Away  Attacks',
-					data: <%= @statistics.reverse_each.map(&:aa).to_json %>
+					data: <%= @statistics.reverse_each.map(&:aa).to_json %>,
+					color: '#0066CC'
 				},
 			]
 		});
@@ -159,11 +180,13 @@
 			[
 				{
 					name: 'Home Shots on Target',
-					data: <%= @statistics.reverse_each.map(&:hsont).to_json %>
+					data: <%= @statistics.reverse_each.map(&:hsont).to_json %>,
+					color: '#CC0000'
 				},
 				{
 					name: 'Away Shots on Target',
-					data: <%= @statistics.reverse_each.map(&:asont).to_json %>
+					data: <%= @statistics.reverse_each.map(&:asont).to_json %>,
+					color: '#0066CC'
 				},
 			]
 		});
@@ -193,11 +216,13 @@
 			[
 				{
 					name: 'Home Shots off Target',
-					data: <%= @statistics.reverse_each.map(&:hsofft).to_json %>
+					data: <%= @statistics.reverse_each.map(&:hsofft).to_json %>,
+					color: '#CC0000'
 				},
 				{
 					name: 'Away Shots off Target',
-					data: <%= @statistics.reverse_each.map(&:asofft).to_json %>
+					data: <%= @statistics.reverse_each.map(&:asofft).to_json %>,
+					color: '#0066CC'
 				},
 			]
 		});
@@ -227,11 +252,13 @@
 			[
 				{
 					name: 'Home Corners',
-					data: <%= @statistics.reverse_each.map(&:hco).to_json %>
+					data: <%= @statistics.reverse_each.map(&:hco).to_json %>,
+					color: '#CC0000'
 				},
 				{
 					name: 'Away Corners',
-					data: <%= @statistics.reverse_each.map(&:aco).to_json %>
+					data: <%= @statistics.reverse_each.map(&:aco).to_json %>,
+					color: '#0066CC'
 				},
 			]
 		});
