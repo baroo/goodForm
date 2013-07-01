@@ -47,8 +47,8 @@ class GoodFormsController < ApplicationController
 		
 		@totalCorners = @totalHomeCorners+@totalAwayCorners
 		
-		@averageHomeCorners = @totalHomeCorners/@homeGames.size
-		@averageAwayCorners = @totalAwayCorners/@awayGames.size
+		@averageHomeCorners = @totalHomeCorners.to_f/@homeGames.size
+		@averageAwayCorners = @totalAwayCorners.to_f/@awayGames.size
 			
 	end
 	
