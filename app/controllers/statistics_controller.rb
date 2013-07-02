@@ -12,23 +12,23 @@ class StatisticsController < ApplicationController
 			@homeGoals = @finalStats.hg
 			@awayGoals = @finalStats.ag
 			
-			@totalAttacks = (@finalStats.ha + @finalStats.aa.to_i)
+			@totalAttacks = (@finalStats.ha.to_i + @finalStats.aa.to_i)
 			@finalHomeAttacksAsPercentage = (@finalStats.ha.to_f / @totalAttacks) * 100
 			@finalAwayAttacksAsPercentage = (@finalStats.aa.to_f / @totalAttacks) * 100
 			
-			@totalDangerousAttacks = (@finalStats.hda + @finalStats.ada.to_i)
+			@totalDangerousAttacks = (@finalStats.hda.to_i + @finalStats.ada.to_i)
 			@finalHomeDangerousAttacksAsPercentage = (@finalStats.hda.to_f / @totalDangerousAttacks) * 100
 			@finalAwayDangerousAttacksAsPercentage = (@finalStats.ada.to_f / @totalDangerousAttacks) * 100
 			
-			@totalShotsOnTarget = (@finalStats.hsont + @finalStats.asont.to_i)
+			@totalShotsOnTarget = (@finalStats.hsont.to_i + @finalStats.asont.to_i)
 			@finalHomeShotsOnTargetAsPercentage = (@finalStats.hsont.to_f / @totalShotsOnTarget) * 100
 			@finalAwayShotsOnTargetAsPercentage = (@finalStats.asont.to_f / @totalShotsOnTarget) * 100
 			
-			@totalShotsOffTarget = (@finalStats.hsofft + @finalStats.asofft.to_i)
+			@totalShotsOffTarget = (@finalStats.hsofft.to_i + @finalStats.asofft.to_i)
 			@finalHomeShotsOffTargetAsPercentage = (@finalStats.hsofft.to_f / @totalShotsOffTarget) * 100
 			@finalAwayShotsOffTargetAsPercentage = (@finalStats.asofft.to_f / @totalShotsOffTarget) * 100
 			
-			@totalCorners = (@finalStats.hco + @finalStats.aco.to_i)
+			@totalCorners = (@finalStats.hco.to_i + @finalStats.aco.to_i)
 			@finalHomeCornersAsPercentage = (@finalStats.hco.to_f / @totalCorners) * 100
 			@finalAwayCornersAsPercentage = (@finalStats.aco.to_f / @totalCorners) * 100
 			
