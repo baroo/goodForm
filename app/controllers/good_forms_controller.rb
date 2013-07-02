@@ -43,14 +43,14 @@ class GoodFormsController < ApplicationController
 			@homeStats = Statistic.where("game_id = ?", hgame.id)
 			
 			if !@homeStats.empty?
-				@totalHomeGoals            += @homeStats.last.hg
-				@totalGoalsConcededHome    += @homeStats.last.ag
-				@totalHomeCorners          += @homeStats.last.hco
-				@totalCornersConcededHome  += @homeStats.last.aco
-				@totalHomeAttacks          += @homeStats.last.ha
-				@totalHomeDangerousAttacks += @homeStats.last.hda
-				@totalHomeShotsOnTarget    += @homeStats.last.hsont
-				@totalHomeShotsOffTarget   += @homeStats.last.hsofft
+				@totalHomeGoals            += @homeStats.last.hg.to_i
+				@totalGoalsConcededHome    += @homeStats.last.ag.to_i
+				@totalHomeCorners          += @homeStats.last.hco.to_i
+				@totalCornersConcededHome  += @homeStats.last.aco.to_i
+				@totalHomeAttacks          += @homeStats.last.ha.to_i
+				@totalHomeDangerousAttacks += @homeStats.last.hda.to_i
+				@totalHomeShotsOnTarget    += @homeStats.last.hsont.to_i
+				@totalHomeShotsOffTarget   += @homeStats.last.hsofft.to_i
 			end
 		end
 
@@ -60,14 +60,14 @@ class GoodFormsController < ApplicationController
 			@awayStats = Statistic.where("game_id = ?", agame.id)
 			
 			if !@awayStats.empty?
-				@totalAwayGoals            += @awayStats.last.ag
-				@totalGoalsConcededAway    += @awayStats.last.hg
-				@totalAwayCorners          += @awayStats.last.aco
-				@totalCornersConcededAway  += @awayStats.last.hco
-				@totalAwayAttacks          += @awayStats.last.aa
-				@totalAwayDangerousAttacks += @awayStats.last.ada
-				@totalAwayShotsOnTarget    += @awayStats.last.asont
-				@totalAwayShotsOffTarget   += @awayStats.last.asofft
+				@totalAwayGoals            += @awayStats.last.ag.to_i
+				@totalGoalsConcededAway    += @awayStats.last.hg.to_i
+				@totalAwayCorners          += @awayStats.last.aco.to_i
+				@totalCornersConcededAway  += @awayStats.last.hco.to_i
+				@totalAwayAttacks          += @awayStats.last.aa.to_i
+				@totalAwayDangerousAttacks += @awayStats.last.ada.to_i
+				@totalAwayShotsOnTarget    += @awayStats.last.asont.to_i
+				@totalAwayShotsOffTarget   += @awayStats.last.asofft.to_i
 			end
 		end
 		
