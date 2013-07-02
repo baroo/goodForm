@@ -22,34 +22,71 @@ class GoodFormsController < ApplicationController
 		#Find the statistics for the games for the team with team.id (1) or team.id (2)
 		#Then aggregate the stats and find averages.
 		
-		@totalHomeCorners = 0
-		@totalAwayCorners = 0
+		@totalHomeGoals            = 0
+		@totalAwayGoals            = 0
+		@totalHomeCorners          = 0
+		@totalAwayCorners          = 0
+		@totalHomeAttacks          = 0
+		@totalAwayAttacks          = 0
+		@totalHomeDangerousAttacks = 0
+		@totalAwayDangerousAttacks = 0
+		@totalHomeShotsOntarget    = 0
+		@totalAwayShotsOntarget    = 0
+		@totalHomeShotsOfftarget   = 0
+		@totalAwayShotsOfftarget   = 0
 
 		@homeGames = Game.where("team1 = ?", @team.id)
 		
 		@homeGames.each do |hgame|
-			@homeCornerStats = Statistic.where("game_id = ?", hgame.id)
+			@homeStats = Statistic.where("game_id = ?", hgame.id)
 			
-			if !@homeCornerStats.empty?
-				@totalHomeCorners += @homeCornerStats.last.hco
+			if !@homeStats.empty?
+				@totalHomeGoals            += @homeStats.last.hg
+				@totalHomeCorners          += @homeStats.last.hco
+				@totalHomeAttacks          += @homeStats.last.ha
+				@totalHomeDangerousAttacks += @homeStats.last.hda
+				@totalHomeShotsOntarget    += @homeStats.last.hsont
+				@totalHomeShotsOfftarget   += @homeStats.last.hsofft
 			end
 		end
 
 		@awayGames = Game.where("team2 = ?", @team.id)
 		
 		@awayGames.each do |agame|
-			@awayCornerStats = Statistic.where("game_id = ?", agame.id)
+			@awayStats = Statistic.where("game_id = ?", agame.id)
 			
-			if !@awayCornerStats.empty?
-				@totalAwayCorners += @awayCornerStats.last.aco
+			if !@awayStats.empty?
+				@totalAwayGoals            += @awayStats.last.ag
+				@totalAwayCorners          += @awayStats.last.aco
+				@totalAwayAttacks          += @awayStats.last.aa
+				@totalAwayDangerousAttacks += @awayStats.last.ada
+				@totalAwayShotsOntarget    += @awayStats.last.asont
+				@totalAwayShotsOfftarget   += @awayStats.last.asofft
 			end
 		end
 		
-		@totalCorners = @totalHomeCorners+@totalAwayCorners
+		@homeGamesPlayed = @homeGames.size
+		@awayGamesPlayed = @awayGames.size
 		
-		@averageHomeCorners = @totalHomeCorners.to_f/@homeGames.size
-		@averageAwayCorners = @totalAwayCorners.to_f/@awayGames.size
-			
+		@totalCorners                = @totalHomeCorners+@totalAwayCorners
+		
+		@averageHomeGoals            = @totalHomeGoals.to_f/@homeGamesPlayed
+		@averageAwayGoals            = @totalAwayGoals.to_f/@awayGamesPlayed
+		
+		@averageHomeCorners          = @totalHomeCorners.to_f/@homeGamesPlayed
+		@averageAwayCorners          = @totalAwayCorners.to_f/@awayGamesPlayed
+
+		@averageHomeAttacks          = @totalHomeAttacks.to_f/@homeGamesPlayed
+		@averageAwayAttacks          = @totalAwayAttacks.to_f/@awayGamesPlayed
+
+		@averageHomeDangerousAttacks = @totalHomeDangerousAttacks.to_f/@homeGamesPlayed
+		@averageAwayDangerousAttacks = @totalAwayDangerousAttacks.to_f/@awayGamesPlayed
+
+		@averageHomeShotsOnTarget    = @totalHomeShotsOnTarget.to_f/@homeGamesPlayed
+		@averageAwayShotsOnTarget    = @totalAwayShotsOnTarget.to_f/@awayGamesPlayed
+		
+		@averageHomeShotsOffTarget   = @totalHomeShotsOffTarget.to_f/@homeGamesPlayed
+		@averageAwayShotsOffTarget   = @totalAwayShotsOffTarget.to_f/@awayGamesPlayed
 	end
 	
 	def new
