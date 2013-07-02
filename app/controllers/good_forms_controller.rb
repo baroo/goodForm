@@ -21,9 +21,13 @@ class GoodFormsController < ApplicationController
 		#Then aggregate the stats and find averages.
 		
 		@totalHomeGoals            = 0
+		@totalGoalsConcededHome    = 0
 		@totalAwayGoals            = 0
+		@totalGoalsConcededAway    = 0
 		@totalHomeCorners          = 0
+		@totalCornersConcededHome  = 0
 		@totalAwayCorners          = 0
+		@totalCornersConcededAway  = 0
 		@totalHomeAttacks          = 0
 		@totalAwayAttacks          = 0
 		@totalHomeDangerousAttacks = 0
@@ -40,7 +44,9 @@ class GoodFormsController < ApplicationController
 			
 			if !@homeStats.empty?
 				@totalHomeGoals            += @homeStats.last.hg
+				@totalGoalsConcededHome    += @homeStats.last.ag
 				@totalHomeCorners          += @homeStats.last.hco
+				@totalCornersConcededHome  += @homeStats.last.aco
 				@totalHomeAttacks          += @homeStats.last.ha
 				@totalHomeDangerousAttacks += @homeStats.last.hda
 				@totalHomeShotsOnTarget    += @homeStats.last.hsont
@@ -55,7 +61,9 @@ class GoodFormsController < ApplicationController
 			
 			if !@awayStats.empty?
 				@totalAwayGoals            += @awayStats.last.ag
+				@totalGoalsConcededAway    += @awayStats.last.hg
 				@totalAwayCorners          += @awayStats.last.aco
+				@totalCornersConcededAway  += @awayStats.last.hco
 				@totalAwayAttacks          += @awayStats.last.aa
 				@totalAwayDangerousAttacks += @awayStats.last.ada
 				@totalAwayShotsOnTarget    += @awayStats.last.asont
@@ -66,25 +74,31 @@ class GoodFormsController < ApplicationController
 		@homeGamesPlayed = @homeGames.size
 		@awayGamesPlayed = @awayGames.size
 		
-		@totalCorners                = @totalHomeCorners+@totalAwayCorners
+		@totalCorners                 = @totalHomeCorners+@totalAwayCorners
 		
-		@averageHomeGoals            = @totalHomeGoals.to_f/@homeGamesPlayed
-		@averageAwayGoals            = @totalAwayGoals.to_f/@awayGamesPlayed
+		@averageHomeGoals             = @totalHomeGoals.to_f/@homeGamesPlayed
+		@averageAwayGoals             = @totalAwayGoals.to_f/@awayGamesPlayed
 		
-		@averageHomeCorners          = @totalHomeCorners.to_f/@homeGamesPlayed
-		@averageAwayCorners          = @totalAwayCorners.to_f/@awayGamesPlayed
-
-		@averageHomeAttacks          = @totalHomeAttacks.to_f/@homeGamesPlayed
-		@averageAwayAttacks          = @totalAwayAttacks.to_f/@awayGamesPlayed
-
-		@averageHomeDangerousAttacks = @totalHomeDangerousAttacks.to_f/@homeGamesPlayed
-		@averageAwayDangerousAttacks = @totalAwayDangerousAttacks.to_f/@awayGamesPlayed
-
-		@averageHomeShotsOnTarget    = @totalHomeShotsOnTarget.to_f/@homeGamesPlayed
-		@averageAwayShotsOnTarget    = @totalAwayShotsOnTarget.to_f/@awayGamesPlayed
+		@averageGoalsConcededAtHome   = @totalGoalsConcededHome.to_f/@homeGamesPlayed
+		@averageGoalsConcededAway     = @totalGoalsConcededAway.to_f/@awayGamesPlayed
 		
-		@averageHomeShotsOffTarget   = @totalHomeShotsOffTarget.to_f/@homeGamesPlayed
-		@averageAwayShotsOffTarget   = @totalAwayShotsOffTarget.to_f/@awayGamesPlayed
+		@averageHomeCorners           = @totalHomeCorners.to_f/@homeGamesPlayed
+		@averageAwayCorners           = @totalAwayCorners.to_f/@awayGamesPlayed
+		
+		@averageCornersConcededAtHome = @totalCornersConcededHome.to_f/@homeGamesPlayed
+		@averageCornersConcededAway   = @totalCornersConcededAway.to_f/@awayGamesPlayed
+
+		@averageHomeAttacks           = @totalHomeAttacks.to_f/@homeGamesPlayed
+		@averageAwayAttacks           = @totalAwayAttacks.to_f/@awayGamesPlayed
+
+		@averageHomeDangerousAttacks  = @totalHomeDangerousAttacks.to_f/@homeGamesPlayed
+		@averageAwayDangerousAttacks  = @totalAwayDangerousAttacks.to_f/@awayGamesPlayed
+
+		@averageHomeShotsOnTarget     = @totalHomeShotsOnTarget.to_f/@homeGamesPlayed
+		@averageAwayShotsOnTarget     = @totalAwayShotsOnTarget.to_f/@awayGamesPlayed
+		
+		@averageHomeShotsOffTarget    = @totalHomeShotsOffTarget.to_f/@homeGamesPlayed
+		@averageAwayShotsOffTarget    = @totalAwayShotsOffTarget.to_f/@awayGamesPlayed
 	end
 	
 	def new

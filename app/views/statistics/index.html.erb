@@ -53,16 +53,16 @@
 			[
 				{
 					name: 'Away',
-					data: [<%= @finalAwayAttacksAsPercentage %>, <%= @finalAwayDangerousAttacksAsPercentage %>, 
-					       <%= @finalAwayShotsOnTargetAsPercentage %>, <%= @finalAwayShotsOffTargetAsPercentage %>, 
-						   <%= @finalAwayCornersAsPercentage %> ],
+					data: [<%= @finalAwayAttacksAsPercentage.round(2) %>, <%= @finalAwayDangerousAttacksAsPercentage.round(2) %>, 
+					       <%= @finalAwayShotsOnTargetAsPercentage.round(2) %>, <%= @finalAwayShotsOffTargetAsPercentage.round(2) %>, 
+						   <%= @finalAwayCornersAsPercentage.round(2) %> ],
 					color: '#0066CC'
 				},
 				{
 					name: 'Home',
-					data: [<%= @finalHomeAttacksAsPercentage %>, <%= @finalHomeDangerousAttacksAsPercentage %>, 
-						   <%= @finalHomeShotsOnTargetAsPercentage %>, <%= @finalHomeShotsOffTargetAsPercentage %>, 
-						   <%= @finalHomeCornersAsPercentage %>],
+					data: [<%= @finalHomeAttacksAsPercentage.round(2) %>, <%= @finalHomeDangerousAttacksAsPercentage.round(2) %>, 
+						   <%= @finalHomeShotsOnTargetAsPercentage.round(2) %>, <%= @finalHomeShotsOffTargetAsPercentage.round(2) %>, 
+						   <%= @finalHomeCornersAsPercentage.round(2) %>],
 					color: '#CC0000'
 				}
 			]

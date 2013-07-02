@@ -23,23 +23,33 @@
 
 <p>
 <h3>Summary</h3>
-<li>Average goals scored per game when playing at home     : <b><%= @averageHomeGoals.round(2) %></b> </li>
-<li>Average goals scored per game when playing away        : <b><%= @averageAwayGoals.round(2) %></b> </li>
 
-<li>Average corners per game when playing at home          : <b><%= @averageHomeCorners.round(2) %></b> </li>
-<li>Average corners per game when playing away             : <b><%= @averageAwayCorners.round(2) %></b> </li>
+<ul>
+<li>Average number of goals scored per game when playing at home     :  <b><%= @averageHomeGoals.round(2) %></b> </li>
+<li>Average number of goals scored per game when playing away        :  <b><%= @averageAwayGoals.round(2) %></b> </li>
 
-<li>Average attacks per game when playing at home          : <b><%= @averageHomeAttacks.round(2) %></b> </li>
-<li>Average attacks per game when playing away             : <b><%= @averageAwayAttacks.round(2) %></b> </li>
+<li>Average number of goals conceded per game when playing at home   : <b><%= @averageGoalsConcededAtHome.round(2) %></b> </li>
+<li>Average number of goals conceded per game when playing away      : <b><%= @averageGoalsConcededAway.round(2) %></b> </li>
 
-<li>Average dangerous attacks per game when playing at home: <b><%= @averageHomeDangerousAttacks.round(2) %></b> </li>
-<li>Average dangerous attacks per game when playing away   : <b><%= @averageAwayDangerousAttacks.round(2) %></b> </li>
+<li>Average number of corners per game when playing at home          : <b><%= @averageHomeCorners.round(2) %></b> </li>
+<li>Average number of corners per game when playing away             : <b><%= @averageAwayCorners.round(2) %></b> </li>
 
-<li>Average shots on target per game when playing at home  : <b><%= @averageHomeShotsOnTarget.round(2) %></b> </li>
-<li>Average shots on target per game when playing away     : <b><%= @averageAwayShotsOnTarget.round(2) %></b> </li>
+<li>Average number of corners conceded per game when playing at home : <b><%= @averageCornersConcededAtHome.round(2) %></b> </li>
+<li>Average number of corners conceded per game when playing away    : <b><%= @averageCornersConcededAway.round(2) %></b> </li>
 
-<li>Average shots off target per game when playing at home : <b><%= @averageHomeShotsOffTarget.round(2) %></b> </li>
-<li>Average shots off target per game when playing away    : <b><%= @averageAwayShotsOffTarget.round(2) %></b> </li>
+<li>Average number of  attacks per game when playing at home         : <b><%= @averageHomeAttacks.round(2) %></b> </li>
+<li>Average number of attacks per game when playing away             : <b><%= @averageAwayAttacks.round(2) %></b> </li>
+
+<li>Average number of dangerous attacks per game when playing at home: <b><%= @averageHomeDangerousAttacks.round(2) %></b> </li>
+<li>Average number of dangerous attacks per game when playing away   : <b><%= @averageAwayDangerousAttacks.round(2) %></b> </li>
+
+<li>Average number of shots on target per game when playing at home  : <b><%= @averageHomeShotsOnTarget.round(2) %></b> </li>
+<li>Average number of shots on target per game when playing away     : <b><%= @averageAwayShotsOnTarget.round(2) %></b> </li>
+
+<li>Average number of shots off target per game when playing at home : <b><%= @averageHomeShotsOffTarget.round(2) %></b> </li>
+<li>Average number of shots off target per game when playing away    : <b><%= @averageAwayShotsOffTarget.round(2) %></b> </li>
+</ul>
+
 </p>
 
 <small><%= @team.created_at %></small>
