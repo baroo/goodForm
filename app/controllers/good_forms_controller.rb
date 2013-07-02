@@ -30,10 +30,10 @@ class GoodFormsController < ApplicationController
 		@totalAwayAttacks          = 0
 		@totalHomeDangerousAttacks = 0
 		@totalAwayDangerousAttacks = 0
-		@totalHomeShotsOntarget    = 0
-		@totalAwayShotsOntarget    = 0
-		@totalHomeShotsOfftarget   = 0
-		@totalAwayShotsOfftarget   = 0
+		@totalHomeShotsOnTarget    = 0
+		@totalAwayShotsOnTarget    = 0
+		@totalHomeShotsOffTarget   = 0
+		@totalAwayShotsOffTarget   = 0
 
 		@homeGames = Game.where("team1 = ?", @team.id)
 		
@@ -45,8 +45,8 @@ class GoodFormsController < ApplicationController
 				@totalHomeCorners          += @homeStats.last.hco
 				@totalHomeAttacks          += @homeStats.last.ha
 				@totalHomeDangerousAttacks += @homeStats.last.hda
-				@totalHomeShotsOntarget    += @homeStats.last.hsont
-				@totalHomeShotsOfftarget   += @homeStats.last.hsofft
+				@totalHomeShotsOnTarget    += @homeStats.last.hsont
+				@totalHomeShotsOffTarget   += @homeStats.last.hsofft
 			end
 		end
 
@@ -60,8 +60,8 @@ class GoodFormsController < ApplicationController
 				@totalAwayCorners          += @awayStats.last.aco
 				@totalAwayAttacks          += @awayStats.last.aa
 				@totalAwayDangerousAttacks += @awayStats.last.ada
-				@totalAwayShotsOntarget    += @awayStats.last.asont
-				@totalAwayShotsOfftarget   += @awayStats.last.asofft
+				@totalAwayShotsOnTarget    += @awayStats.last.asont
+				@totalAwayShotsOffTarget   += @awayStats.last.asofft
 			end
 		end
 		
