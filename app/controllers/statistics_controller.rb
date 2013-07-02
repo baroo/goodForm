@@ -12,9 +12,17 @@ class StatisticsController < ApplicationController
 			@homeGoals = @finalStats.hg
 			@awayGoals = @finalStats.ag
 			
+			@totalAttacks = 0
+			@totalDangerousAttacks = 0
+			@totalShotsOnTarget = 0
+			@totalShotsOffTarget = 0
+			@totalCorners = 0
+			
 			@totalAttacks = (@finalStats.ha.to_i + @finalStats.aa.to_i)
 			@finalHomeAttacksAsPercentage = (@finalStats.ha.to_f / @totalAttacks) * 100
 			@finalAwayAttacksAsPercentage = (@finalStats.aa.to_f / @totalAttacks) * 100
+			
+			
 			
 			@totalDangerousAttacks = (@finalStats.hda.to_i + @finalStats.ada.to_i)
 			@finalHomeDangerousAttacksAsPercentage = (@finalStats.hda.to_f / @totalDangerousAttacks) * 100
