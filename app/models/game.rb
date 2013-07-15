@@ -8,6 +8,7 @@ class Game < ActiveRecord::Base
   
   #This needs sorting out with zones.
    def self.search()
-		where(:kodate => (Time.zone.now - 2.hours)..Time.zone.now ).order('kodate DESC')
+		#where(:kodate => (Time.zone.now - 2.hours)..Time.zone.now ).order('kodate DESC')
+		where(:kodate => (Time.zone.now.beginning_of_day)..Time.zone.now ).order('kodate DESC')
 	end
 end
