@@ -1,7 +1,7 @@
 class CreateLeaguesTable < ActiveRecord::Migration
   def up
       create_table :leagues do |t|
-      t.string :league_Id
+      t.string :league_id
       t.string :name
       t.timestamps
 	  end
