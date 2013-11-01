@@ -4,7 +4,7 @@ class GoodFormsController < ApplicationController
 		@teams = Team.search(params[:search])
 		@leagues = League.search(params[:leagueSearch])
 		@gamesForToday = Game.search()
-		@numberOfTeams = Team.count
+	  @numberOfTeams = Team.count
 		@numberOfLeagues = League.count
 		@NumberOfGames = Game.count
 		@numberOfStatistics = (Statistic.count * 30)

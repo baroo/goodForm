@@ -1,9 +1,14 @@
 class LeaguesController < ApplicationController
 	def index
-		@league = League.where("id = ?", params[:goodForm_id])
-		@tempTeams = @league.first.teams
-		@sortedTeams = @tempTeams.sort_by{ | teamName | teamName.name }
-		@teams = @sortedTeams.uniq
+	  respond_to do |format|
+	    format.html {
+        @league = League.where("id = ?", params[:goodForm_id])
+            @tempTeams = @league.first.teams
+            @sortedTeams = @tempTeams.sort_by{ | teamName | teamName.name }
+            @teams = @sortedTeams.uniq  
+	    }
+	    format.json {render json: LeaguesDatatable.new(view_context) }
+	  end
 	end
 	
 	def show
