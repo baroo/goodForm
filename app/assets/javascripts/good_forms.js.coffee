@@ -9,6 +9,7 @@ jQuery ->
           bServerSide: true
           bInfo:false
           bFilter:false
+          bStateSave: true
           sAjaxSource: $('#games').data('source')
           
 jQuery ->
@@ -17,6 +18,7 @@ jQuery ->
           bJQueryUI: true
           bProcessing: true
           bServerSide: true
+          bStateSave: true
           sAjaxSource: $('#teams').data('source')
           
 jQuery ->
@@ -25,4 +27,5 @@ jQuery ->
           bJQueryUI: true
           bProcessing: true
           bServerSide: true
+          bStateSave: true
           sAjaxSource: $('#leagues').data('source')
