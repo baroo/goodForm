@@ -7,8 +7,11 @@ class Game < ActiveRecord::Base
   has_one :team2, :class_name => "Team", :primary_key =>"team2", :foreign_key => "id"
   
   #This needs sorting out with zones.
-   def self.search()
-		#where(:kodate => (Time.zone.now - 2.hours)..Time.zone.now ).order('kodate DESC')
-		where(:kodate => (Time.zone.now.beginning_of_day)..Time.zone.now ).order('kodate DESC')
+  def self.search()
+		where(:kodate => (Time.zone.now - 2.hours)..Time.zone.now ).order('kodate DESC')
+	end
+	
+	def self.find()
+    find(:all,:joins=>:team1, :order=>'teams.name DESC' )	
 	end
 end

@@ -4,88 +4,63 @@
 
 <% d = Time.zone.now %>
 
-<p>Time: <%= d.strftime('%b %d, %Y %H:%M:%S') =%> </p>
+<p>
+	Time: <%= d.strftime('%b %d, %Y %H:%M:%S') =%>
+</p>
 
-<!-- <table border="1">
-<tr>
-<td>Teams</td>
-<td>Leagues</td> 
-<td>Games</td>   
-<td>Statistics Available</td> 
-</tr>
-<tr>
-<td><%=@numberOfTeams %></td>
- <td><%=@numberOfLeagues %></td>
-<td><%=@NumberOfGames %></td>
-<td><%=@numberOfStatistics %></td>
-</tr>
-</table> -->
+<table border="1">
+	<tr>
+		<td>Teams</td>
+		<td>Leagues</td>
+		<td>Games</td>
+		<td>Statistics Available</td>
+	</tr>
+	<tr>
+		<td><%= @numberOfTeams %></td>
+		<td><%= @numberOfLeagues %></td>
+		<td><%= @NumberOfGames %></td>
+		<td><%= @numberOfStatistics %></td>
+	</tr>
+</table>
 
 <a name"top"></a>
 
-<%= form_tag goodForms_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Teams", :name => nil %>
-  </p>
-<% end %>
+<p>
+	<b>Current Games</b> (or games in the last 2 hours):
+</p>
 
-<%= form_tag goodForms_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :leagueSearch, params[:leagueSearch] %>
-    <%= submit_tag "Search Leagues", :name => nil %>
-  </p>
-<% end %>
+<table id="games" class="display" data-source="<%= games_url(format: "json") %>">
 
-<ul>
-
-<%unless @teams == nil %>
-	<% for team in @teams %>
-		<li>
-			<%= link_to team.name, goodForm_path(team.id) %>
-		</li>
-	<% end %>
-<% end %>
-
-<%unless @leagues == nil %>
-	<% for league in @leagues %>
-		<li>
-			<%= link_to league.name, goodForm_leagues_path(league.id) %>
-		</li>
-	<% end %>
-<% end %>
-
-</ul>
-
-<p><b>Today's Games</b></p>
-
-<table border="1">
-
-<tr>
-	<th>Kick Off Time</th>
-	<th>Home</th>
-	<th>Away</th>
-	<th>Stats</th>
-</tr>
-
-<%unless @gamesForToday == nil %>
-	<% for game in @gamesForToday %>
+	<thead>
 		<tr>
-			<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
-			<%unless game.team1 == nil %>
-				<td><%= link_to game.team1.name, goodForm_path(game.team1) %></td>
-			<% end %>
-			<%unless game.team2 == nil %>	
-				<td><%= link_to game.team2.name, goodForm_path(game.team2) %></td>
-			<% end %>
-			<td><%= link_to "Click for Stats", goodForm_statistics_path(game)%></td>
+			<th>Kick Off Time</th>
+			<th>Home</th>
+			<th>Away</th>
+			<th>Stats</th>
 		</tr>
-	<% end %>
-<% end %>
+	</thead>
 
+	<tbody></tbody>
 </table>
 
-<a href="#top">Back To Top</a>
+<table id="teams" class="display" data-source="<%= teams_url(format: "json") %>">
+	<thead>
+		<tr>
+			<th>Team Name</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
 
+<table id="leagues" class="display" data-source="<%= leagues_url(format: "json") %>">
+	<thead>
+		<tr>
+			<th>League Name</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
 
-
+<p>
+	<a href="#top">Back To Top</a>
+</p>

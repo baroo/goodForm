@@ -1,9 +1,32 @@
+SQL> describe leagues;
++-----------------------------------------------------------------------------------------------------+
+|   Column   |            Type             |                        Modifiers                         |
++-----------------------------------------------------------------------------------------------------+
+| id         | integer                     | primary key not null nextval('leagues_id_seq'::regclass) |
+| league_id  | character varying(255)      |                                                          |
+| name       | character varying(255)      |                                                          |
+| created_at | timestamp without time zone | not null                                                 |
+| updated_at | timestamp without time zone | not null                                                 |
++-----------------------------------------------------------------------------------------------------+
+
+SQL> describe games;
++---------------------------------------------------------------------------------------------------+
+|   Column   |            Type             |                       Modifiers                        |
++---------------------------------------------------------------------------------------------------+
+| id         | integer                     | primary key not null nextval('games_id_seq'::regclass) |
+| league_id  | integer                     |                                                        |
+| koDate     | date                        |                                                        |
+| team1      | integer                     |                                                        |
+| team2      | integer                     |                                                        |
+| created_at | timestamp without time zone | not null                                               |
+| updated_at | timestamp without time zone | not null                                               |
++---------------------------------------------------------------------------------------------------+
 SQL> describe statistics;
 +--------------------------------------------------------------------------------------------------------+
 |   Column   |            Type             |                          Modifiers                          |
 +--------------------------------------------------------------------------------------------------------+
 | id         | integer                     | primary key not null nextval('statistics_id_seq'::regclass) |
-| gametime   | integer                     |                                                             |
+| gametime   | timestamp without time zone |                                                             |
 | seentime   | timestamp without time zone |                                                             |
 | game_id    | integer                     |                                                             |
 | hpn        | integer                     |                                                             |
@@ -39,18 +62,6 @@ SQL> describe statistics;
 | created_at | timestamp without time zone | not null                                                    |
 | updated_at | timestamp without time zone | not null                                                    |
 +--------------------------------------------------------------------------------------------------------+
-SQL> describe games;
-+---------------------------------------------------------------------------------------------------+
-|   Column   |            Type             |                       Modifiers                        |
-+---------------------------------------------------------------------------------------------------+
-| id         | integer                     | primary key not null nextval('games_id_seq'::regclass) |
-| leagueId   | integer                     |                                                        |
-| koDate     | date                        |                                                        |
-| team1      | integer                     |                                                        |
-| team2      | integer                     |                                                        |
-| created_at | timestamp without time zone | not null                                               |
-| updated_at | timestamp without time zone | not null                                               |
-+---------------------------------------------------------------------------------------------------+
 SQL> describe teams;
 +---------------------------------------------------------------------------------------------------+
 |   Column   |            Type             |                       Modifiers                        |
@@ -60,13 +71,29 @@ SQL> describe teams;
 | created_at | timestamp without time zone | not null                                               |
 | updated_at | timestamp without time zone | not null                                               |
 +---------------------------------------------------------------------------------------------------+
-SQL> describe leagues;
-+-----------------------------------------------------------------------------------------------------+
-|   Column   |            Type             |                        Modifiers                         |
-+-----------------------------------------------------------------------------------------------------+
-| id         | integer                     | primary key not null nextval('leagues_id_seq'::regclass) |
-| name       | character varying(255)      |                                                          |
-| league_id  | character varying(255)      |                                                          |
-| created_at | timestamp without time zone | not null                                                 |
-| updated_at | timestamp without time zone | not null                                                 |
-+-----------------------------------------------------------------------------------------------------+
+
+
+SQL> select max(hsont) from statistics;
++-----+
+| max |
++-----+
+|  18 |
++-----+
+SQL> select max(asont) from statistics;
++-----+
+| max |
++-----+
+|  15 |
++-----+
+SQL> select distinct team1 from games inner join statistics on games.id = statistics.game_id where statistics.hsont = 18;
++-------+
+| team1 |
++-------+
+|   405 |
++-------+
+SQL> select name from teams where teams.id = 405;
++----------------------------+
+|            name            |
++----------------------------+
+| Melbourne Victory FC Youth |
++----------------------------+

@@ -5,8 +5,8 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-#gem 'sqlite3'
+#gem 'pg'
+gem 'sqlite3'
 gem 'devise'
 
 
@@ -16,8 +16,6 @@ gem 'devise'
 #group :development, :test do
 #  gem 'pg'
 #end
-
-
 
 
 # Gems used only for assets and not required
@@ -30,9 +28,13 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'highcharts-rails'
+  gem 'jquery-datatables-rails'
+  gem 'jquery-ui-rails'
 end
 
 gem "jquery-rails"
+gem "will_paginate"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -48,3 +50,4 @@ gem "jquery-rails"
 
 # To use debugger
 # gem 'debugger'
+
