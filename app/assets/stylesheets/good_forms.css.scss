@@ -4,8 +4,10 @@
 
 $font-stack:    Cabin, sans-serif;
 $primary-color: #333;
+$background-color:Azure;
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
+  background-color: $background-color;
 }
