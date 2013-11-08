@@ -5,6 +5,7 @@
 $font-stack:    Cabin, sans-serif;
 $primary-color: #333;
 $background-color:Azure;
+$header-color:CadetBlue;
 
 body {
   font: 100% $font-stack;
@@ -12,4 +13,50 @@ body {
   background-color: $background-color;
 }
 
+/*
+ * Table styles
+ */
+table.display {
+	width: 100%;
+	clear: both;
+}
 
+table.display td,
+table.display th {
+	padding: 5px;
+	border: 1px solid #fff;
+}
+
+/* Header cells */
+table.display thead th {
+	text-align: left;
+	background: $header-color;
+	color:#ffffff;
+}
+
+/* Body cells */
+table.display tbody th {
+	text-align: left;
+	background: $background-color;
+}
+	
+table.display tbody td {
+	text-align: left;
+	background: $background-color;
+}
+		
+table.display tbody tr.odd td { 
+	background: $background-color;
+}
+
+/* Footer cells */	
+table.display tfoot th {
+	background: $background-color;
+	text-align: left;
+}
+	
+table.display tfoot td {
+	background: $background-color;
+	text-align: left;
+	font-weight: bold;
+}
