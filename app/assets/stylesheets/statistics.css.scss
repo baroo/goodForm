@@ -9,13 +9,14 @@ border-collapse:collapse;
 }
 #statistics td, #statistics th 
 {
-font-size:1em;
+font-size:$font-size;
 border:1px solid #FFFFFF;
 padding:3px 7px 2px 7px;
 }
 #statistics th 
 {
-font-size:1em;
+font-size:$font-size;
+font-weight:$font-weight;
 text-align:left;
 padding-top:5px;
 padding-bottom:4px;

@@ -6,12 +6,24 @@ $font-stack: "Trebuchet MS", Arial, Helvetica, sans-serif;
 $primary-color: #333;
 $background-color:Azure;
 $header-color:CadetBlue;
+$font-weight:normal;
+$font-size:1em;
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
   background-color: $background-color;
 }
+
+/*
+font-size:$font-size;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:$header-color;
+color:#ffffff;
+*/
+
 
 /*
  * Table styles
@@ -60,3 +72,5 @@ table.display tfoot td {
 	text-align: left;
 	font-weight: bold;
 }
+
+
