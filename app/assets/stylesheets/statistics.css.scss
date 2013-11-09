@@ -1,10 +1,9 @@
 // Place all the styles related to the statistics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "good_forms.css.scss";
 #statistics
 {
-font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 width:100%;
 border-collapse:collapse;
 }
@@ -16,11 +15,11 @@ padding:3px 7px 2px 7px;
 }
 #statistics th 
 {
-font-size:1.1em;
+font-size:1em;
 text-align:left;
 padding-top:5px;
 padding-bottom:4px;
-background-color:#6699FF;
+background-color:$header-color;
 color:#ffffff;
 }
 #statistics tr.alt td 

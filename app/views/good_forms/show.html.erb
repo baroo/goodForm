@@ -5,11 +5,11 @@
 <table border="1" id="games">
 
 <tr>
-	<th>LEAGUE</th>
-	<th>KICK OFF DATE</th>
-	<th>HOME TEAM</th>
-	<th>AWAY TEAM</th>
-	<th>STATS</th>
+	<th>League</th>
+	<th>Kick Off Date</th>
+	<th>Home Team</th>
+	<th>Away Team</th>
+	<th>Statistics</th>
 </tr>
 	<% @gamesSorted.each do |game| %>
 <tr>
@@ -17,7 +17,7 @@
 	<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
 	<td><%= link_to game.team1.name, goodForm_path(game.team1)%></td>
 	<td><%= link_to game.team2.name, goodForm_path(game.team2) %></td>
-	<td><%= link_to "Click for Stats", goodForm_statistics_path(game)%></td>
+	<td><%= link_to "Click for Statistics", goodForm_statistics_path(game)%></td>
 </tr>
 	<% end %>
 
