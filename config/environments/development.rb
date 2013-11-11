@@ -35,6 +35,9 @@ GoodForm::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
+  #SQL query logger
+  config.logger = Logger.new(STDOUT)
+  
   # Devise mailer stuff
   config.action_mailer.default_url_options = { :host => 'http://nameless-escarpment-5345.herokuapp.com' }
 end
