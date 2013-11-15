@@ -1,8 +1,51 @@
-<h1><%= @team.name %>: Games</h1>
+<h1><%= @team.name %></h1>
 
+<table border="1" id="summary">
 
+<p>Good Form has records for <%= @homeGamesPlayed %> Home games and <%= @awayGamesPlayed %> Away games </p>
+
+  <tr>
+    <th>Average</th>
+    <th>Home</th>
+    <th>Away</th>
+  </tr>
+  <tr>
+    <td>Goals Scored</td>
+    <td><%= @averageHomeGoals.round(1) %></td>
+    <td><%= @averageAwayGoals.round(1) %></td>
+  </tr>
+  <tr>
+    <td>Corners</td>
+    <td><%= @averageHomeCorners.round(1) %></td>
+    <td><%= @averageAwayCorners.round(1) %></td>
+  </tr>
+  <tr>
+    <td>Attacks</td>
+    <td><%= @averageHomeAttacks.round(1) %></td>
+    <td><%= @averageAwayAttacks.round(1) %></td>
+  </tr>
+  <tr>
+    <td>Dangerous Attacks</td>
+    <td><%= @averageHomeDangerousAttacks.round(1) %></td>
+    <td><%= @averageAwayDangerousAttacks.round(1) %></td>
+  </tr>
+  <tr>
+    <td>Shots On Target</td>
+    <td><%= @averageHomeShotsOnTarget.round(1) %></td>
+    <td><%= @averageAwayShotsOnTarget.round(1) %></td>
+  </tr>
+  <tr>
+    <td>Shots Off Target</td>
+    <td><%= @averageHomeShotsOffTarget.round(1) %></td>
+    <td><%= @averageAwayShotsOffTarget.round(1) %></td>
+  </tr>
+</table>
+
+<br> </br>
 
 <table border="1" id="games">
+
+<p><b>Recorded Games</b></p>
 
 <tr>
 	<th>League</th>
@@ -22,35 +65,6 @@
 	<% end %>
 
 </table>
-
-<p>
-<h3>Summary</h3>
-
-<ul>
-
-<li>Home games played : <b><%= @homeGamesPlayed %></b> </li>
-<li>Away games played : <b><%= @awayGamesPlayed %></b> </li>
-
-<li>Average number of goals scored per game when playing at home     :  <b><%= @averageHomeGoals.round(2) %></b> </li>
-<li>Average number of goals scored per game when playing away        :  <b><%= @averageAwayGoals.round(2) %></b> </li>
-
-<li>Average number of corners per game when playing at home          : <b><%= @averageHomeCorners.round(2) %></b> </li>
-<li>Average number of corners per game when playing away             : <b><%= @averageAwayCorners.round(2) %></b> </li>
-
-<li>Average number of  attacks per game when playing at home         : <b><%= @averageHomeAttacks.round(2) %></b> </li>
-<li>Average number of attacks per game when playing away             : <b><%= @averageAwayAttacks.round(2) %></b> </li>
-
-<li>Average number of dangerous attacks per game when playing at home: <b><%= @averageHomeDangerousAttacks.round(2) %></b> </li>
-<li>Average number of dangerous attacks per game when playing away   : <b><%= @averageAwayDangerousAttacks.round(2) %></b> </li>
-
-<li>Average number of shots on target per game when playing at home  : <b><%= @averageHomeShotsOnTarget.round(2) %></b> </li>
-<li>Average number of shots on target per game when playing away     : <b><%= @averageAwayShotsOnTarget.round(2) %></b> </li>
-
-<li>Average number of shots off target per game when playing at home : <b><%= @averageHomeShotsOffTarget.round(2) %></b> </li>
-<li>Average number of shots off target per game when playing away    : <b><%= @averageAwayShotsOffTarget.round(2) %></b> </li>
-</ul>
-
-</p>
 
 <small><%= @team.created_at %></small>
 
