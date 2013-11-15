@@ -38,12 +38,24 @@ class GoodFormsController < ApplicationController
 			@homeStats = Statistic.where("game_id = ?", hgame.id)
 			
 			if !@homeStats.empty?
-				@totalHomeGoals            += @homeStats.last.hg
-				@totalHomeCorners          += @homeStats.last.hco
-				@totalHomeAttacks          += @homeStats.last.ha
-				@totalHomeDangerousAttacks += @homeStats.last.hda
-				@totalHomeShotsOnTarget    += @homeStats.last.hsont
-				@totalHomeShotsOffTarget   += @homeStats.last.hsofft
+				unless @homeStats.last.hg.nil?
+					@totalHomeGoals            += @homeStats.last.hg
+				end
+				unless @homeStats.last.hco.nil?
+					@totalHomeCorners          += @homeStats.last.hco
+				end
+				unless @homeStats.last.ha.nil?
+					@totalHomeAttacks          += @homeStats.last.ha
+				end
+				unless @homeStats.last.hda.nil?
+					@totalHomeDangerousAttacks += @homeStats.last.hda
+				end
+				unless @homeStats.last.hsont.nil?
+					@totalHomeShotsOnTarget    += @homeStats.last.hsont
+				end
+				unless @homeStats.last.hsofft.nil?
+					@totalHomeShotsOffTarget   += @homeStats.last.hsofft
+				end
 			end
 		end
 
@@ -53,12 +65,24 @@ class GoodFormsController < ApplicationController
 			@awayStats = Statistic.where("game_id = ?", agame.id)
 			
 			if !@awayStats.empty?
-				@totalAwayGoals            += @awayStats.last.ag
-				@totalAwayCorners          += @awayStats.last.aco
-				@totalAwayAttacks          += @awayStats.last.aa
-				@totalAwayDangerousAttacks += @awayStats.last.ada
-				@totalAwayShotsOnTarget    += @awayStats.last.asont
-				@totalAwayShotsOffTarget   += @awayStats.last.asofft
+				unless @awayStats.last.ag.nil?
+					@totalAwayGoals            += @awayStats.last.ag
+				end
+				unless @awayStats.last.aco.nil?
+					@totalAwayCorners          += @awayStats.last.aco
+				end
+				unless @awayStats.last.aa.nil?
+					@totalAwayAttacks          += @awayStats.last.aa
+				end
+				unless @awayStats.last.ada.nil?
+					@totalAwayDangerousAttacks += @awayStats.last.ada
+				end
+				unless @awayStats.last.asont.nil?
+					@totalAwayShotsOnTarget    += @awayStats.last.asont
+				end
+				unless @awayStats.last.asofft.nil?
+					@totalAwayShotsOffTarget   += @awayStats.last.asofft
+				end
 			end
 		end
 		
