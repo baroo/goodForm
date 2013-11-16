@@ -3,18 +3,15 @@ class GoodFormsController < ApplicationController
 		@teams = Team.search(params[:search])
 		@leagues = League.search(params[:leagueSearch])
 		@gamesForToday = Game.search()
-	    #@numberOfTeams = Team.count
-		#@numberOfLeagues = League.count
-		#@NumberOfGames = Game.count
-		#@numberOfStatistics = (Statistic.count * 30)
 	end
 	
 	def show
 		@team        = Team.find(params[:id])
 		@games       = Game.where("team1 = ? OR team2 = ?", @team.id, @team.id) #Returns an array 
 		@gamesSorted = @games.all(:order => "kodate DESC")
-		#@statistics = Statistics.find_by_gameid(@game.first.team1.id) # find the statistics for the first game.
+		#@statistics = Statistic.find(@games.first.team1.id) # find the statistics for the first game.
 		@teamsInSameleague = Team.where("name = ?", @games.first.league.name)
+		
 		
 		#Find the statistics for the games for the team with team.id (1) or team.id (2)
 		#Then aggregate the stats and find averages.

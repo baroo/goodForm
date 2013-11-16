@@ -1,5 +1,8 @@
 <h1><%= @team.name %></h1>
 
+
+<debug>@tatt</debug>
+
 <table border="1" id="summary">
 
 <p>Good Form has records for <%= @homeGamesPlayed %> Home games and <%= @awayGamesPlayed %> Away games </p>
@@ -58,8 +61,8 @@
 <tr>
 	<td><%= link_to game.league.name, goodForm_league_path(game.league_id) %></td>
 	<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
-	<td><%= link_to game.team1.name, goodForm_path(game.team1)%></td>
-	<td><%= link_to game.team2.name, goodForm_path(game.team2) %></td>
+	<td><%= link_to game.team1.name, goodForm_path(game.team1)%>  <%=Statistic.where("game_id = ?", game.id).last.hg%> </td>
+	<td><%= link_to game.team2.name, goodForm_path(game.team2) %> <%=Statistic.where("game_id = ?", game.id).last.ag%> </td>
 	<td><%= link_to "Click for Statistics", goodForm_statistics_path(game)%></td>
 </tr>
 	<% end %>
