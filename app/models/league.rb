@@ -7,7 +7,7 @@ class League < ActiveRecord::Base
   
   def self.search(search)
 	if search
-		find(:all, :conditions => ['lower(name) LIKE ?', "%#{search.downcase}%"], :order => 'name ASC')
+		find(:all, :conditions => ['lower(name) ILIKE ?', "%#{search.downcase}%"], :order => 'name ASC')
 #	else
 #	find(:all)
 	end
