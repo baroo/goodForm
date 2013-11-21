@@ -55,21 +55,25 @@
 	<th>Statistics</th>
 </tr>
 	<% @gamesSorted.each do |game| %>
-		<% @rarr = Statistic.where("game_id = ?", game.id).last %>
+		<% @gameStats = Statistic.where("game_id = ?", game.id).last %>
 <tr>
 	<td><%= link_to game.league.name, goodForm_league_path(game.league_id) %></td>
 	<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
 	<td><%= link_to game.team1.name, goodForm_path(game.team1)%>  
-		<% if @rarr %>
-			<%= @rarr.hg %>
+		<% if @gameStats %>
+			<%= @gameStats.hg %>
 		<% end %>
 	</td>
 	<td><%= link_to game.team2.name, goodForm_path(game.team2) %> 
-		<% if @rarr %> 
-			<%= @rarr.ag %>
+		<% if @gameStats %> 
+			<%= @gameStats.ag %>
 		<% end %>
 	</td>
-	<td><%= link_to "Click for Statistics", goodForm_statistics_path(game)%></td>
+		<% if @gameStats %>
+			<td><%= link_to "Click for Statistics", goodForm_statistics_path(game)%></td>
+		<% else %>
+			<td> :( no stats available</td>
+		<% end %>
 </tr>
 	<% end %>
 </table>
