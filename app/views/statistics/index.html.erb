@@ -6,10 +6,23 @@
 	{
          chart: 
 		{
+            backgroundColor: {
+                linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                stops: [
+                    [0, 'rgb(48, 48, 96)'],
+                    [1, 'rgb(0, 0, 0)']
+                ]
+            },
+            borderColor: '#000000',
+            borderWidth: 2,
+            className: 'dark-container',
+            plotBackgroundColor: 'rgba(255, 255, 255, .1)',
+            plotBorderColor: '#CCCCCC',
+            plotBorderWidth: 1,
+
 			type: 'bar',
 			renderTo: "container",
-			reflow: false,
-			plotBackgroundColor: '#339900'
+			reflow: false
 			
         },
 		
@@ -18,14 +31,14 @@
             text: 'Game Statistics for <%=@team1 %> (<%= @statistics.first.hg %>) vs  <%= @team2 %> (<%= @statistics.first.ag %>)',
 			style: 
 			{
-                color: '#000066',
+                color: '#FFFFFF',
 				fontSize: '25px',
                 fontWeight: 'bold'
             }
          },
         xAxis: 
 		{
-            categories: ['Attacks', 'Dangerous Attacks', 'Shots On Target', 'Shots Off Target', 'Corners']
+            categories: ['Attacks', 'Dangerous Attacks', 'Shots On Target', 'Shots  Off Target', 'Corners']
         },
         yAxis: 
 		{
@@ -72,26 +85,59 @@
  
 	$(function()
 	{
-
 		new Highcharts.Chart(
 		{
+            colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+                "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
 			chart:
 			{
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                    stops: [
+                        [0, 'rgb(48, 48, 96)'],
+                        [1, 'rgb(0, 0, 0)']
+                    ]
+                },
+                borderColor: '#000000',
+                borderWidth: 2,
+                className: 'dark-container',
+                plotBackgroundColor: 'rgba(255, 255, 255, .1)',
+                plotBorderColor: '#CCCCCC',
+                plotBorderWidth: 1,
 				renderTo: "statistics_chart"
 			},
 			title:
 			{
+                color: '#C0C0C0',
 				text: "Dangerous Attacks"
 			},
 			xAxis:
 			{
+                gridLineColor: '#333333',
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
 				type: "integer"
 			},
 			yAxis:
 			{
+                gridLineColor: '#333333',
+                labels: {
+                    style: {
+                        color: '#A0A0A0'
+                    }
+                },
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
+                tickWidth: 1,
 				min: 0,
 				title:
 				{
+                    style: {
+                        color: '#CCC',
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+                    },
 					text: "Number of Dangerous Attacks"
 				}
 			},
@@ -100,36 +146,71 @@
 			[
 				{
 					name: 'Home Dangerous Attacks',
-					data: <%= @statistics.reverse_each.map(&:hda).to_json %>,
+					data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.hda] } %>,
 					color: '#CC0000'
 				},
 				{
 					name: 'Away Dangerous Attacks',
-					data: <%= @statistics.reverse_each.map(&:ada).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.ada] } %>,
 					color: '#0066CC'
-				},
+				}
 			]
 		});
 
 		new Highcharts.Chart(
 		{
+            colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+                "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+
 			chart:
 			{
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                    stops: [
+                        [0, 'rgb(48, 48, 96)'],
+                        [1, 'rgb(0, 0, 0)']
+                    ]
+                },
+                borderColor: '#000000',
+                borderWidth: 2,
+                className: 'dark-container',
+                plotBackgroundColor: 'rgba(255, 255, 255, .1)',
+                plotBorderColor: '#CCCCCC',
+                plotBorderWidth: 1,
 				renderTo: "attacks_chart"
 			},
 			title:
 			{
+                color: '#C0C0C0',
 				text: "Attacks"
 			},
 			xAxis:
 			{
+                gridLineColor: '#333333',
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
 				type: "integer"
 			},
 			yAxis:
 			{
-				min: 0,
-				title:
-				{
+                gridLineColor: '#333333',
+                labels: {
+                    style: {
+                        color: '#A0A0A0'
+                    }
+                },
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
+                tickWidth: 1,
+                min: 0,
+                title:
+                {
+                    style: {
+                        color: '#CCC',
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+                    },
 					text: "Number of Attacks"
 				}
 			},
@@ -137,35 +218,70 @@
 			[
 				{
 					name: 'Home  Attacks',
-					data: <%= @statistics.reverse_each.map(&:ha).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.ha] } %>,
 					color: '#CC0000'
 				},
 				{
 					name: 'Away  Attacks',
-					data: <%= @statistics.reverse_each.map(&:aa).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.aa] } %>,
 					color: '#0066CC'
-				},
+				}
 			]
 		});
 		new Highcharts.Chart(
 		{
+            colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+                "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+
 			chart:
 			{
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                    stops: [
+                        [0, 'rgb(48, 48, 96)'],
+                        [1, 'rgb(0, 0, 0)']
+                    ]
+                },
+                borderColor: '#000000',
+                borderWidth: 2,
+                className: 'dark-container',
+                plotBackgroundColor: 'rgba(255, 255, 255, .1)',
+                plotBorderColor: '#CCCCCC',
+                plotBorderWidth: 1,
 				renderTo: "shots_on_target_chart"
 			},
 			title:
 			{
+                color: '#C0C0C0',
 				text: "Shots on Target"
 			},
 			xAxis:
 			{
+                gridLineColor: '#333333',
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
 				type: "integer"
 			},
 			yAxis:
 			{
-				min: 0,
-				title:
-				{
+                gridLineColor: '#333333',
+                labels: {
+                    style: {
+                        color: '#A0A0A0'
+                    }
+                },
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
+                tickWidth: 1,
+                min: 0,
+                title:
+                {
+                    style: {
+                        color: '#CCC',
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+                    },
 					text: "Shots on Target"
 				}
 			},
@@ -173,35 +289,71 @@
 			[
 				{
 					name: 'Home Shots on Target',
-					data: <%= @statistics.reverse_each.map(&:hsont).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.hsont] } %>,
 					color: '#CC0000'
 				},
 				{
 					name: 'Away Shots on Target',
-					data: <%= @statistics.reverse_each.map(&:asont).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.asont] } %>,
 					color: '#0066CC'
-				},
+				}
 			]
 		});
 		new Highcharts.Chart(
 		{
+            colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+                "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+
 			chart:
 			{
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                    stops: [
+                        [0, 'rgb(48, 48, 96)'],
+                        [1, 'rgb(0, 0, 0)']
+                    ]
+                },
+                borderColor: '#000000',
+                borderWidth: 2,
+                className: 'dark-container',
+                plotBackgroundColor: 'rgba(255, 255, 255, .1)',
+                plotBorderColor: '#CCCCCC',
+                plotBorderWidth: 1,
 				renderTo: "shots_off_target_chart"
 			},
 			title:
 			{
+                color: '#C0C0C0',
 				text: "Shots off Target"
 			},
 			xAxis:
 			{
+                gridLineColor: '#333333',
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
 				type: "integer"
 			},
 			yAxis:
 			{
 				min: 0,
-				title:
-				{
+                gridLineColor: '#333333',
+                labels: {
+                    style: {
+                        color: '#A0A0A0'
+                    }
+                },
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
+                tickWidth: 1,
+                min: 0,
+                title:
+                {
+                    style: {
+                        color: '#CCC',
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+                    },
 					text: "Shots off Target"
 				}
 			},
@@ -209,35 +361,69 @@
 			[
 				{
 					name: 'Home Shots off Target',
-					data: <%= @statistics.reverse_each.map(&:hsofft).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.hsofft] } %>,
 					color: '#CC0000'
 				},
 				{
 					name: 'Away Shots off Target',
-					data: <%= @statistics.reverse_each.map(&:asofft).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.asofft] } %>,
 					color: '#0066CC'
-				},
+				}
 			]
 		});
 		new Highcharts.Chart(
 		{
+            colors: ["#DDDF0D", "#55BF3B", "#DF5353", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+                "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
 			chart:
 			{
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                    stops: [
+                        [0, 'rgb(48, 48, 96)'],
+                        [1, 'rgb(0, 0, 0)']
+                    ]
+                },
+                borderColor: '#000000',
+                borderWidth: 2,
+                className: 'dark-container',
+                plotBackgroundColor: 'rgba(255, 255, 255, .1)',
+                plotBorderColor: '#CCCCCC',
+                plotBorderWidth: 1,
 				renderTo: "corners_chart"
 			},
 			title:
 			{
+                color: '#C0C0C0',
 				text: "Corners"
 			},
 			xAxis:
 			{
+                gridLineColor: '#333333',
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
 				type: "integer"
 			},
 			yAxis:
 			{
-				min: 0,
-				title:
-				{
+                gridLineColor: '#333333',
+                labels: {
+                    style: {
+                        color: '#A0A0A0'
+                    }
+                },
+                lineColor: '#A0A0A0',
+                tickColor: '#A0A0A0',
+                tickWidth: 1,
+                min: 0,
+                title:
+                {
+                    style: {
+                        color: '#CCC',
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+                    },
 					text: "Corners"
 				}
 			},
@@ -245,14 +431,14 @@
 			[
 				{
 					name: 'Home Corners',
-					data: <%= @statistics.reverse_each.map(&:hco).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.hco] } %>,
 					color: '#CC0000'
 				},
 				{
 					name: 'Away Corners',
-					data: <%= @statistics.reverse_each.map(&:aco).to_json %>,
+                    data: <%= @statistics.map{|statistics| [statistics.gametime, statistics.aco] } %>,
 					color: '#0066CC'
-				},
+				}
 			]
 		});
 	});	
