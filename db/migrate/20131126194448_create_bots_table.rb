@@ -1,4 +1,4 @@
-class CreateLeaguesTable < ActiveRecord::Migration
+class CreateBotsTable < ActiveRecord::Migration
   def up
       create_table :bots do |t|
       t.string :bot_id
