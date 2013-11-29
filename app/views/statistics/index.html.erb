@@ -22,6 +22,11 @@
 
 			type: 'bar',
 			renderTo: "container",
+            tooltip: {
+                formatter: function() {
+                    return 'not implemented';
+                }
+            }             ,
 			reflow: false
 			
         },
@@ -104,7 +109,7 @@
                 plotBackgroundColor: 'rgba(255, 255, 255, .1)',
                 plotBorderColor: '#CCCCCC',
                 plotBorderWidth: 1,
-				renderTo: "statistics_chart"
+				renderTo: "dangerous_attacks_chart"
 			},
 			title:
 			{
@@ -444,12 +449,17 @@
 	});	
 </script>
 
-<div id="statistics_chart" style="width:560px; height:300px;"></div>
+<div id="home" >
+  <div id="attacks">
+<div id="dangerous_attacks_chart" style="width:560px; height:300px;"></div>
 <div id="attacks_chart" style="width:560px; height:300px;"></div>
+  </div>
+  <div id="shots">
 <div id="shots_on_target_chart" style="width:560px; height:300px;"></div>
 <div id="shots_off_target_chart" style="width:560px; height:300px;"></div>
+    </div>
 <div id="corners_chart" style="width:560px; height:300px;"></div>
-<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+</div>
 
 <table border="1" id="statistics">
 
