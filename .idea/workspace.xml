@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e2c3dcf-ad60-4dfa-a40f-fb8c73f70cac" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/good_forms.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/good_forms.css.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/statistics/index.html.erb" afterPath="$PROJECT_DIR$/app/views/statistics/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/statistics.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/statistics.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="goodForm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,13 +36,13 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/statistics/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="93" selection-start="365" selection-end="365" vertical-scroll-proportion="0.23172243">
+            <state line="426" column="39" selection-start="12041" selection-end="12041" vertical-scroll-proportion="0.94795537">
               <folding>
-                <element signature="e#12684#12718#0" expanded="true" />
-                <element signature="e#12750#12784#0" expanded="true" />
-                <element signature="e#12852#12886#0" expanded="true" />
-                <element signature="e#12927#12961#0" expanded="true" />
-                <element signature="e#13004#13038#0" expanded="true" />
+                <element signature="e#12704#12738#0" expanded="true" />
+                <element signature="e#12770#12804#0" expanded="true" />
+                <element signature="e#12872#12906#0" expanded="true" />
+                <element signature="e#12947#12981#0" expanded="true" />
+                <element signature="e#13024#13058#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -835,13 +838,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/statistics/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="93" selection-start="365" selection-end="365" vertical-scroll-proportion="0.23172243">
+        <state line="426" column="39" selection-start="12041" selection-end="12041" vertical-scroll-proportion="0.94795537">
           <folding>
-            <element signature="e#12684#12718#0" expanded="true" />
-            <element signature="e#12750#12784#0" expanded="true" />
-            <element signature="e#12852#12886#0" expanded="true" />
-            <element signature="e#12927#12961#0" expanded="true" />
-            <element signature="e#13004#13038#0" expanded="true" />
+            <element signature="e#12704#12738#0" expanded="true" />
+            <element signature="e#12770#12804#0" expanded="true" />
+            <element signature="e#12872#12906#0" expanded="true" />
+            <element signature="e#12947#12981#0" expanded="true" />
+            <element signature="e#13024#13058#0" expanded="true" />
           </folding>
         </state>
       </provider>
