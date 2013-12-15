@@ -1,4 +1,4 @@
-class DropColumnsFromBotsTable < ActiveRecord::Migration
+class RemoveIdFromBotsTable < ActiveRecord::Migration
    def up
       remove_column :bots, :id
     end
