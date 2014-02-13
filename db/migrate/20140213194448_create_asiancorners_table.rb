@@ -1,7 +1,7 @@
 class CreateAsianCornersTable < ActiveRecord::Migration
   def up
       create_table :asiancorners do |t|
-      t.integer :id
+      t.int :id :default => 0 
       t.string :game_id
       t.string :cornerline
       t.string :homeprice
