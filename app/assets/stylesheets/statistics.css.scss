@@ -2,17 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "good_forms.css.scss";
+
+#container {
+  background: azure url(../images/Football-grass-pitch.jpg);
+  min-height: 100%;
+  margin: auto;
+  padding-bottom: 50px;
+  background-color:#CCCCCC;
+  max-width: 1120px;
+}
+
+#attacks
+{
+  margin: auto;
+}
+
+#shots
+{
+  margin: auto;
+}
+
 #statistics
 {
 width:100%;
 border-collapse:collapse;
 }
+
 #statistics td, #statistics th 
 {
 font-size:$font-size;
 border:1px solid #FFFFFF;
 padding:3px 7px 2px 7px;
 }
+
 #statistics th 
 {
 font-size:$font-size;
@@ -23,8 +45,17 @@ padding-bottom:4px;
 background-color:$header-color;
 color:#ffffff;
 }
+
 #statistics tr.alt td 
 {
 color:#000000;
 background-color:#EAF2D3;
 }
+
+#highcharts-0{width: 560px; height: 150px; float: left}
+#dangerous_attacks_chart{width: 560px; height: 150px; float: right}
+#attacks_chart{width: 560px; float: left}
+#shots_on_target_chart{width: 560px; float: right}
+#shots_off_target_chart{width: 560px; float: left}
+#corners_chart{width: 560px; float: left}
+
