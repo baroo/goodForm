@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gameId: 1
+  goalsWinHome: 1.5
+  goalsWinAway: 1.5
+  goalsLikelyScoreHome: 1
+  goalsLikelyScoreAway: 1
+  goalsLikelyProbability: 1.5
+  cornersWinHome: 1.5
+  cornersWinAway: 1.5
+  cornersLikelyScoreHome: 1
+  cornersLikelyScoreAway: 1
+  cornersLikelyProbability: 1.5
+
+two:
+  gameId: 1
+  goalsWinHome: 1.5
+  goalsWinAway: 1.5
+  goalsLikelyScoreHome: 1
+  goalsLikelyScoreAway: 1
+  goalsLikelyProbability: 1.5
+  cornersWinHome: 1.5
+  cornersWinAway: 1.5
+  cornersLikelyScoreHome: 1
+  cornersLikelyScoreAway: 1
+  cornersLikelyProbability: 1.5

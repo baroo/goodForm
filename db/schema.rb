@@ -11,11 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105105205) do
+ActiveRecord::Schema.define(:version => 20140214091008) do
+
+  create_table "asiancorners", :force => true do |t|
+    t.string   "idx"
+    t.string   "game_id"
+    t.string   "cornerline"
+    t.string   "homeprice"
+    t.string   "awayprice"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "bots", :id => false, :force => true do |t|
+    t.string   "bot_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "games", :force => true do |t|
     t.integer  "league_id"
-    t.datetime "kodate"
+    t.date     "kodate"
     t.integer  "team1"
     t.integer  "team2"
     t.datetime "created_at", :null => false
@@ -32,7 +48,6 @@ ActiveRecord::Schema.define(:version => 20131105105205) do
   end
 
   create_table "leagues", :force => true do |t|
-    t.string   "league_Id"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
