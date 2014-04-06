@@ -1,5 +1,5 @@
 class GamesDatatable
-  delegate :params, :link_to,:goodForm_path, :goodForm_statistics_path, to: :@view
+  delegate :params, :link_to, :goodForm_path, :goodForm_statistics_path, to: :@view
   
   def initialize(view)
       @view = view
@@ -23,7 +23,7 @@ class GamesDatatable
           game.kodate.strftime('%b %d, %Y %H:%M:%S'),
           link_to(game.team1.name, goodForm_path(game.team1)) ,
           link_to(game.team2.name, goodForm_path(game.team2)),
-          #link_to("Click for Statistics", goodForm_statistics_path(game))
+          link_to("Show game", goodForm_statistics_path(game))
         ]
       end
 
