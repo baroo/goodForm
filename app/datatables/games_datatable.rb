@@ -22,7 +22,7 @@ class GamesDatatable
           game.kodate.strftime('%b %d, %Y %H:%M:%S'),
           link_to(game.team1.name, goodForm_path(game.team1)) ,
           link_to(game.team2.name, goodForm_path(game.team2)),
-          link_to("Show game", goodForm_statistics_path(game))
+          link_to("Statistics", goodForm_statistics_path(game))
         ]
       end
     end
@@ -34,7 +34,8 @@ class GamesDatatable
    def fetch_games
      games = Game.order("#{sort_column} #{sort_direction}")
      games = games.page(page).per_page(per_page)
-     games.where(:kodate => (Time.zone.now - 2.hours)..Time.zone.now )
+     games.where(:kodate => (Time.current - 2.hours)..Time.current )
+
    end    
     
    def page
