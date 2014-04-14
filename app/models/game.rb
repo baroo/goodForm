@@ -9,9 +9,9 @@ class Game < ActiveRecord::Base
   #This needs sorting out with zones.
   def self.search()
 		where(:kodate => (Time.zone.now - 2.hours)..Time.zone.now ).order('kodate DESC')
-	end
+  end
 	
-	def self.find()
+  def self.find()
     find(:all,:joins=>:team1, :order=>'teams.name DESC' )	
-	end
+  end
 end
