@@ -23,6 +23,7 @@ class GamesDatatable
           link_to(game.team1.name, goodForm_path(game.team1)) ,
           link_to(game.team2.name, goodForm_path(game.team2)),
           link_to_unless(Statistic.where("game_id = ?", game.id).last.nil? "Click for Statistics", goodForm_statistics_path(game))
+        ]
       end
     end
   
