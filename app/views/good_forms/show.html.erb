@@ -58,7 +58,7 @@
 </tr>
 	<% @gamesSorted.each do |game| %>
 		<% @gameStats       = Statistic.where("game_id = ?", game.id).last %>
-		<% @gamePredictions = PredictionData.where("gameId = ?", game.id).last %>
+		<% @gamePredictions = PredictionData.where("gameid = ?", game.id).last %>
 <tr>
 	<td><%= link_to game.league.name, goodForm_league_path(game.league_id) %></td>
 	<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
@@ -68,7 +68,7 @@
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.goalsLikelyScoreHome %>
+			<%= @gamePredictions.goalslikelyscorehome %>
 		<% end %>
 	</td>
 	<td><%= link_to game.team2.name, goodForm_path(game.team2) %> 
@@ -77,7 +77,7 @@
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.goalsLikelyScoreAway %>
+			<%= @gamePredictions.goalslikelyscoreaway %>
 		<% end %>
 	</td>
 		<% if @gameStats %>
