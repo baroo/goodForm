@@ -45,15 +45,36 @@
 
 <table border="1" id="games">
 
-<p><b>Recorded Games</b></p>
+<h2><b>Games</b></h2>
+
+<b>Key</b><p/>
+<b>HWL</b> : Home Win Likelyhood,
+<b>HG</b> :  Home Goals (Actual, where applicable),
+<b>PHG</b>: Predicted Home Goals,
+<b>HC</b> :  Home Corners (Actual, where applicable),
+<b>PHC</b> : Predicted Home Corners,
+<b>AWL</b> : Away Win Likelyhood,
+<b>AG</b> :  Away Goals (Actual, where applicable),
+<b>PAG</b> : Predicted Away Goals,
+<b>AC</b> :  Away Corners (Actual, where applicable),
+<b>PAC</b> : Predicted Away Corners.
+<p></p>
 
 <tr>
 	<th>League</th>
 	<th>Kick Off Date</th>
 	<th>Home Team</th>
-	<th>PredictedGoals</th>
+	<th>HLW</th>
+	<th>HG</th>
+	<th>PHG</th>
+	<th>HC</th>
+	<th>PHC</th>
 	<th>Away Team</th>
-	<th>PredictedGoals</th>
+	<th>ALW</th>
+	<th>AG</th>
+	<th>PAG</th>
+	<th>AC</th>
+	<th>PAC</th>
 	<th>Statistics</th>
 </tr>
 	<% @gamesSorted.each do |game| %>
@@ -62,22 +83,50 @@
 <tr>
 	<td><%= link_to game.league.name, goodForm_league_path(game.league_id) %></td>
 	<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
-	<td><%= link_to game.team1.name, goodForm_path(game.team1)%>  
+	<td><%= link_to game.team1.name, goodForm_path(game.team1)%></td>
+	<td><% if @gamePredictions %>
+			<%= @gamePredictions.goalswinhome %> <! -- HLW>
+		<%end%>		
+	</td>
+	<td>
 		<% if @gameStats %>
-			<%= @gameStats.hg %>
+			<%= @gameStats.hg %> <! -- HG>
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.goalslikelyscorehome %>
-		<% end %>
+			<%= @gamePredictions.goalslikelyscorehome %> <! -- PHG>
+		<%end%>
 	</td>
-	<td><%= link_to game.team2.name, goodForm_path(game.team2) %> 
+	<td>
+		<% if @gameStats %>
+			<%= @gameStats.hco %> <! -- HG>
+		<% end %>
+	</td>		
+	<td><% if @gamePredictions %>
+			<%= @gamePredictions.cornerslikelyscorehome %> <! -- PHC>
+		<% end %>
+	</td>						
+	<td><%= link_to game.team2.name, goodForm_path(game.team2) %> </td>
+	<td><% if @gamePredictions %>
+			<%= @gamePredictions.goalswinaway %>
+		<%end%>		
+	</td>
+	<td>
 		<% if @gameStats %> 
 			<%= @gameStats.ag %>
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.goalslikelyscoreaway %>
+				<%= @gamePredictions.goalslikelyscoreaway %>
+		<% end %>
+	</td>
+	<td>
+		<% if @gameStats %>
+			<%= @gameStats.aco %> <! -- HG>
+		<% end %>
+	</td>	
+	<td><% if @gamePredictions %>
+				<%= @gamePredictions.cornerslikelyscoreaway %>
 		<% end %>
 	</td>
 		<% if @gameStats %>
