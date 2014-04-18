@@ -50,12 +50,14 @@
 <b>Key</b><p/>
 <b>HWL</b> : Home Win Likelyhood,
 <b>HG</b> :  Home Goals (Actual, where applicable),
-<b>PHG</b>: Predicted Home Goals,
+<b>PHG</b>:  Predicted Home Goals,
+<b>HCW</b> : Home Corner Win,
 <b>HC</b> :  Home Corners (Actual, where applicable),
 <b>PHC</b> : Predicted Home Corners,
 <b>AWL</b> : Away Win Likelyhood,
 <b>AG</b> :  Away Goals (Actual, where applicable),
 <b>PAG</b> : Predicted Away Goals,
+<b>ACW</b> : Away Corner Win,
 <b>AC</b> :  Away Corners (Actual, where applicable),
 <b>PAC</b> : Predicted Away Corners.
 <p></p>
@@ -67,12 +69,14 @@
 	<th>HLW</th>
 	<th>HG</th>
 	<th>PHG</th>
+	<th>HCW</th>
 	<th>HC</th>
 	<th>PHC</th>
 	<th>Away Team</th>
 	<th>ALW</th>
 	<th>AG</th>
 	<th>PAG</th>
+	<th>ACW</th>
 	<th>AC</th>
 	<th>PAC</th>
 	<th>Statistics</th>
@@ -97,6 +101,10 @@
 			<%= @gamePredictions.goalslikelyscorehome %> <! -- PHG>
 		<%end%>
 	</td>
+	<td><% if @gamePredictions %>
+			<%= @gamePredictions.cornerswinhome %> <! -- PHG>
+		<%end%>
+	</td>
 	<td>
 		<% if @gameStats %>
 			<%= @gameStats.hco %> <! -- HG>
@@ -119,6 +127,10 @@
 	<td><% if @gamePredictions %>
 				<%= @gamePredictions.goalslikelyscoreaway %>
 		<% end %>
+	</td>
+	<td><% if @gamePredictions %>
+			<%= @gamePredictions.cornerswinaway %> <! -- PHG>
+		<%end%>
 	</td>
 	<td>
 		<% if @gameStats %>
