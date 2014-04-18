@@ -66,17 +66,17 @@
 	<th>League</th>
 	<th>Kick Off Date</th>
 	<th>Home Team</th>
-	<th>HLW</th>
+	<th>HWL</th>
 	<th>HG</th>
 	<th>PHG</th>
-	<th>HCW</th>
+	<th>HCWL</th>
 	<th>HC</th>
 	<th>PHC</th>
 	<th>Away Team</th>
-	<th>ALW</th>
+	<th>AWL</th>
 	<th>AG</th>
 	<th>PAG</th>
-	<th>ACW</th>
+	<th>ACWL</th>
 	<th>AC</th>
 	<th>PAC</th>
 	<th>Statistics</th>
@@ -89,56 +89,56 @@
 	<td><%= game.kodate.strftime('%b %d, %Y %H:%M:%S') %></td>
 	<td><%= link_to game.team1.name, goodForm_path(game.team1)%></td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.goalswinhome %> <! -- HLW>
+			<%= @gamePredictions.goalswinhome.round(3) %> <!-- HWL -->
 		<%end%>		
 	</td>
 	<td>
 		<% if @gameStats %>
-			<%= @gameStats.hg %> <! -- HG>
+			<%= @gameStats.hg %> <!-- HG -->
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.goalslikelyscorehome %> <! -- PHG>
+			<%= @gamePredictions.goalslikelyscorehome %> <!-- PHG -->
 		<%end%>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.cornerswinhome %> <! -- PHG>
+			<%= @gamePredictions.cornerswinhome %> <!-- HCWL -->
 		<%end%>
 	</td>
 	<td>
 		<% if @gameStats %>
-			<%= @gameStats.hco %> <! -- HG>
+			<%= @gameStats.hco %> <!-- HC -->
 		<% end %>
 	</td>		
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.cornerslikelyscorehome %> <! -- PHC>
+			<%= @gamePredictions.cornerslikelyscorehome.round(3) %> <!--PHC -->
 		<% end %>
-	</td>						
+	</td>					
 	<td><%= link_to game.team2.name, goodForm_path(game.team2) %> </td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.goalswinaway %>
+			<%= @gamePredictions.goalswinaway.round(3) %> <!-- AWL -->
 		<%end%>		
 	</td>
 	<td>
 		<% if @gameStats %> 
-			<%= @gameStats.ag %>
+			<%= @gameStats.ag %> <!-- AG -->
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-				<%= @gamePredictions.goalslikelyscoreaway %>
+				<%= @gamePredictions.goalslikelyscoreaway.round(3) %> <!--PAG -->
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.cornerswinaway %> <! -- PHG>
+			<%= @gamePredictions.cornerswinaway %> <!-- ACWL -->
 		<%end%>
 	</td>
 	<td>
 		<% if @gameStats %>
-			<%= @gameStats.aco %> <! -- HG>
+			<%= @gameStats.aco %> <!-- AC -->
 		<% end %>
 	</td>	
 	<td><% if @gamePredictions %>
-				<%= @gamePredictions.cornerslikelyscoreaway %>
+				<%= @gamePredictions.cornerslikelyscoreaway.round(3) %> <!-- PAC -->
 		<% end %>
 	</td>
 		<% if @gameStats %>
