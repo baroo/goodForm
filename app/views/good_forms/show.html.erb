@@ -48,16 +48,16 @@
 <h2><b>Games</b></h2>
 
 <b>Key</b><p/>
-<b>HWL</b> : Home Win Likelyhood,
+<b>HWL</b> : Home Win Likelihood,
 <b>HG</b> :  Home Goals (Actual, where applicable),
 <b>PHG</b>:  Predicted Home Goals,
-<b>HCW</b> : Home Corner Win,
+<b>HCWL</b> : Home Corner Win Likelihood,
 <b>HC</b> :  Home Corners (Actual, where applicable),
 <b>PHC</b> : Predicted Home Corners,
-<b>AWL</b> : Away Win Likelyhood,
+<b>AWL</b> : Away Win Likelihood,
 <b>AG</b> :  Away Goals (Actual, where applicable),
 <b>PAG</b> : Predicted Away Goals,
-<b>ACW</b> : Away Corner Win,
+<b>ACWL</b> : Away Corner Win Likelihood,
 <b>AC</b> :  Away Corners (Actual, where applicable),
 <b>PAC</b> : Predicted Away Corners.
 <p></p>
@@ -102,7 +102,7 @@
 		<%end%>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.cornerswinhome %> <!-- HCWL -->
+			<%= @gamePredictions.cornerswinhome.round(3) %> <!-- HCWL -->
 		<%end%>
 	</td>
 	<td>
@@ -129,7 +129,7 @@
 		<% end %>
 	</td>
 	<td><% if @gamePredictions %>
-			<%= @gamePredictions.cornerswinaway %> <!-- ACWL -->
+			<%= @gamePredictions.cornerswinaway.round(3) %> <!-- ACWL -->
 		<%end%>
 	</td>
 	<td>
