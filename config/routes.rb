@@ -10,7 +10,7 @@ GoodForm::Application.routes.draw do
 	resources :leagues
 	resources :statistics
 	resources :games
-	resources :predictions
+	#resources :predictions
   end
 
 
