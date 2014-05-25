@@ -1,1 +1,23 @@
-<h1>Predicitons Index</h1>
+<h1>GoodForms Predicts...</h1>
+
+<!--<tr>
+	<th>Home Win Likelihood</th>
+	<th>Predicted Home Goals</th>
+	<th>Home Corner Win Likelihood</th>
+	<th>Predicted Home Corners</th>
+	<th>Away Win Likelihood</th>
+	<th>Predicted Away Goals</th>
+	<th>Away Corner Win Likelihood</th>
+	<th>Predicted Away Corners</th>
+</tr> -->
+
+<% for preds in @predictions %>
+		<p>Home Win Likelihood: <%=  preds.goalswinhome %></p>
+		<p>Predicted Home Goals: <%= preds.goalslikelyscorehome %></p>
+		<p>Home Corner Win Likelihood: <%= preds.cornerswinhome %></p>
+		<p>Predicted Home Corners: <%= preds.cornerslikelyscorehome %></p>
+		<p>Away Win Likelihood: <%= preds.goalswinaway %></p>
+		<p>Predicted Away Goals: <%= preds.goalslikelyscoreaway %></p>
+		<p>Away Corner Win Likelihood: <%= preds.cornerswinaway %></p>
+		<p>Predicted Away Corners: <%= preds.cornerslikelyscoreaway %></p>
+<% end %>
