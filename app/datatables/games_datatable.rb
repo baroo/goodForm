@@ -36,7 +36,7 @@ class GamesDatatable
    def fetch_games
      games = Game.order("#{sort_column} #{sort_direction}")
      games = games.page(page).per_page(per_page)
-     games.where(:kodate => (Time.current - 2.hours)..Time.current )
+     games.where(:kodate => (Time.current - 2.hours)..Time.current + 12.hours) 
      #games.where(":kodate = ? OR :kodate= ?", Time.current - 2.hours, Time.current + 12.hours)
      #games.where(:kodate => "2014-05-25")
   end    
