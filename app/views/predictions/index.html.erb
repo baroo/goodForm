@@ -1,23 +1,17 @@
-<h1>GoodForms Predicts...</h1>
-
-<!--<tr>
-	<th>Home Win Likelihood</th>
-	<th>Predicted Home Goals</th>
-	<th>Home Corner Win Likelihood</th>
-	<th>Predicted Home Corners</th>
-	<th>Away Win Likelihood</th>
-	<th>Predicted Away Goals</th>
-	<th>Away Corner Win Likelihood</th>
-	<th>Predicted Away Corners</th>
-</tr> -->
+<h1><%=@homeTeam %> Vs <%=@awayTeam %></h1>
+<h2>GoodForm Predicts...</h2>
 
 <% for preds in @predictions %>
-		<p>Home Win Likelihood: <%=  preds.goalswinhome %></p>
-		<p>Predicted Home Goals: <%= preds.goalslikelyscorehome %></p>
-		<p>Home Corner Win Likelihood: <%= preds.cornerswinhome %></p>
-		<p>Predicted Home Corners: <%= preds.cornerslikelyscorehome %></p>
-		<p>Away Win Likelihood: <%= preds.goalswinaway %></p>
-		<p>Predicted Away Goals: <%= preds.goalslikelyscoreaway %></p>
-		<p>Away Corner Win Likelihood: <%= preds.cornerswinaway %></p>
-		<p>Predicted Away Corners: <%= preds.cornerslikelyscoreaway %></p>
+		<p><b>Score</b> <%=@homeTeam %>: <%= preds.goalslikelyscorehome %> vs <%=@awayTeam %>: <%= preds.goalslikelyscoreaway %></p>
+		<% if preds.goalswinhome > preds.goalswinaway%>
+		<p><b><font color = "green">BET ON <%=@homeTeam %> WIN </font></b>: <%=@homeTeam %> Win Likelihood: <%=  preds.goalswinhome.round(3) %> vs <%=@awayTeam %> <%= preds.goalswinaway.round(3) %></p>
+		<% else%>
+		<p><b><font color = "green">BET ON <%=@awayTeam %> WIN </font></b>: <%=@awayTeam %> Win Likelihood: <%= preds.goalswinaway.round(3) %> vs <%=@homeTeam %> <%=  preds.goalswinhome.round(3) %></p>
+		<%end%>
+		<p><b>Corners</b>  <%=@homeTeam %>: <%= preds.cornerslikelyscorehome %> vs <%=@awayTeam %>: <%= preds.cornerslikelyscoreaway %></p>
+		<% if preds.cornerswinhome > preds.cornerswinaway%>
+		<p><b><font color = "green">BET ON <%=@homeTeam %> CORNERS WIN </font></b>: <%=@homeTeam %> Corners Win Likelihood: <%=  preds.cornerswinhome.round(3) %> vs <%=@awayTeam %> <%= preds.cornerswinaway.round(3) %></p>
+		<% else %>
+		<p><b><font color = "green">BET ON <%=@awayTeam %> CORNERS WIN </font></b>: <%=@awayTeam %> Corners Win Likelihood: <%= preds.cornerswinaway.round(3) %> vs  <%=@homeTeam %> <%=  preds.cornerswinhome.round(3) %></p>
+		<%end%>		
 <% end %>

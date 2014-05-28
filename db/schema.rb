@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140214091008) do
+ActiveRecord::Schema.define(:version => 20140415193253) do
 
   create_table "asiancorners", :force => true do |t|
     t.string   "idx"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(:version => 20140214091008) do
 
   create_table "bots", :id => false, :force => true do |t|
     t.string   "bot_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "fulltimeprice", :force => true do |t|
+    t.string   "idx"
+    t.string   "game_id"
+    t.string   "homeprice"
+    t.string   "drawprice"
+    t.string   "awayprice"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -51,6 +61,49 @@ ActiveRecord::Schema.define(:version => 20140214091008) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "prediction_data", :force => true do |t|
+    t.integer  "gameid"
+    t.float    "goalswinhome"
+    t.float    "goalswinaway"
+    t.integer  "goalslikelyscorehome"
+    t.integer  "goalslikelyscoreaway"
+    t.float    "goalslikelyrobability"
+    t.float    "cornerswinhome"
+    t.float    "cornerswinaway"
+    t.integer  "cornerslikelyscorehome"
+    t.integer  "cornerslikelyscoreaway"
+    t.float    "cornerslikelyprobability"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "predictions", :force => true do |t|
+    t.integer  "gameId"
+    t.float    "goalsWinHome"
+    t.float    "goalsWinAway"
+    t.integer  "goalsLikelyScoreHome"
+    t.integer  "goalsLikelyScoreAway"
+    t.float    "goalsLikelyProbability"
+    t.float    "cornersWinHome"
+    t.float    "cornersWinAway"
+    t.integer  "cornersLikelyScoreHome"
+    t.integer  "cornersLikelyScoreAway"
+    t.float    "cornersLikelyProbability"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "racetocorners", :force => true do |t|
+    t.string   "idx"
+    t.string   "game_id"
+    t.string   "cornertarget"
+    t.string   "homeprice"
+    t.string   "awayprice"
+    t.string   "neitherprice"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "statistics", :force => true do |t|
