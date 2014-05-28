@@ -22,8 +22,8 @@ class GamesDatatable
           game.kodate.strftime('%b %d, %Y %H:%M:%S'),
           link_to(game.team1.name, goodForm_path(game.team1)),
           link_to(game.team2.name, goodForm_path(game.team2)),
-          link_to("Statistics", goodForm_statistics_path(game)),
-          link_to("Predictions", goodForm_predictions_path(game))
+          link_to("Predictions", goodForm_predictions_path(game)),
+          link_to("Statistics", goodForm_statistics_path(game))
           #link_to_unless(Statistic.where("game_id = ?", game.id).last.nil? "Click for Statistics", goodForm_statistics_path(game))
         ]
       end
@@ -37,7 +37,6 @@ class GamesDatatable
      games = Game.order("#{sort_column} #{sort_direction}")
      games = games.page(page).per_page(per_page)
      games.where(:kodate => (Time.current - 2.hours)..Time.current + 12.hours) 
-     #games.where(":kodate = ? OR :kodate= ?", Time.current - 2.hours, Time.current + 12.hours)
      #games.where(:kodate => "2014-05-25")
   end    
     
